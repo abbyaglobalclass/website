@@ -4,159 +4,230 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Projects — A Global Classroom</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  .project-card { background:#fff; border:0.5px solid var(--border); border-radius:var(--radius-lg); overflow:hidden; margin-bottom:24px; }
-  .project-photo { height:220px; background:var(--bg-secondary); border-bottom:0.5px dashed #ccc; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; overflow:hidden; }
-  .project-photo img { width:100%; height:100%; object-fit:cover; }
-  .project-body { padding:28px; }
-  .project-meta { display:flex; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap; }
-  .project-location { font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:4px; }
-  .project-read { font-size:11px; color:var(--text-secondary); }
-  .project-subtitle { font-size:14px; color:var(--text-secondary); font-style:italic; margin-bottom:14px; }
-  .project-divider { height:0.5px; background:var(--border); margin:16px 0; }
-  .disciplines-label { font-size:11px; color:var(--text-secondary); margin-bottom:8px; }
-  .project-footer { display:flex; align-items:center; justify-content:space-between; padding-top:16px; border-top:0.5px solid var(--border); margin-top:4px; }
-  .funder-note { font-size:12px; color:#aaa; display:flex; align-items:center; gap:5px; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --cream: #f0ebe4; --cream-dark: #e5ddd4; --green: #2d4a3e; --green-light: #3d6352; --text: #1a1a1a; --text-mid: #444; --text-light: #777; --border: #ddd6cc; --font-head: 'Barlow Condensed', 'Arial Narrow', sans-serif; --font-body: 'Barlow', Arial, sans-serif; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; line-height: 1.6; font-size: 16px; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { font-family: var(--font-head); font-size: 18px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-size: 13px; font-weight: 600; color: var(--text-mid); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--green); }
+.nav-store { color: var(--green) !important; }
+.nav-btn { background: var(--green); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 22px; border-radius: 3px; border: none; cursor: pointer; font-family: var(--font-body); transition: background 0.2s; display: inline-block; }
+.nav-btn:hover { background: var(--green-light); }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.tag::before { content: ''; width: 28px; height: 2px; background: var(--green); flex-shrink: 0; }
+.tag.light { color: #9fddbb; }
+.tag.light::before { background: #9fddbb; }
+.section { padding: 96px 48px; }
+.inner { max-width: 1200px; margin: 0 auto; }
+h2.display { font-family: var(--font-head); font-size: clamp(2.2rem, 3.5vw, 3.5rem); font-weight: 900; line-height: 0.95; text-transform: uppercase; margin-bottom: 24px; }
+.btn-pill { display: inline-flex; align-items: center; font-size: 14px; font-weight: 600; padding: 13px 28px; border-radius: 40px; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); border: none; }
+.btn-pill-cream { background: var(--cream-dark); color: var(--text); }
+.btn-pill-cream:hover { background: #d9d0c5; }
+.btn-block { display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 28px; border-radius: 3px; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
+.btn-block-outline-light { background: transparent; color: #9fddbb; border: 1.5px solid #9fddbb; }
+
+/* PAGE HERO */
+.page-hero { background: var(--cream); padding: 96px 48px 80px; border-bottom: 1px solid var(--border); }
+.page-hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+.page-hero h1 { font-family: var(--font-head); font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 900; line-height: 0.92; text-transform: uppercase; }
+.page-hero-text p { font-size: 17px; color: var(--text-mid); line-height: 1.75; margin-bottom: 16px; }
+
+/* FUNDER STRIP */
+.funder-strip { background: #fff; border-bottom: 1px solid var(--border); padding: 28px 48px; display: flex; align-items: center; gap: 24px; }
+.funder-strip img { height: 48px; width: auto; object-fit: contain; }
+.funder-strip p { font-size: 14px; color: var(--text-mid); }
+.funder-strip strong { color: var(--text); }
+
+/* PROJECT — full editorial layout */
+.project { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); }
+.project.reverse .project-img { order: 2; }
+.project.reverse .project-body { order: 1; }
+.project-img { overflow: hidden; min-height: 560px; }
+.project-img img { width: 100%; height: 100%; object-fit: cover; }
+.project-body { padding: 64px 72px; display: flex; flex-direction: column; justify-content: center; }
+.project-body.cream { background: var(--cream); }
+.project-body.dark { background: var(--green); }
+.project-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--text-light); margin-bottom: 8px; }
+.project-body.dark .project-num { color: #9fddbb; }
+.project-body h2 { font-family: var(--font-head); font-size: clamp(1.8rem, 2.8vw, 2.8rem); font-weight: 900; text-transform: uppercase; line-height: 1; margin-bottom: 8px; }
+.project-body.dark h2 { color: #fff; }
+.project-subtitle { font-size: 14px; font-style: italic; color: var(--text-light); margin-bottom: 24px; }
+.project-body.dark .project-subtitle { color: #9fddbb; }
+.project-body p { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 14px; }
+.project-body.dark p { color: #a8c8b0; }
+.project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 20px 0; }
+.tag-pill { font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
+.tag-yellow { background: #f0ebe4; color: var(--green); border: 1px solid var(--border); }
+.tag-dark { background: rgba(255,255,255,0.12); color: #9fddbb; border: 1px solid rgba(255,255,255,0.2); }
+.disciplines { margin-top: 20px; padding-top: 20px; border-top: 0.5px solid var(--border); }
+.project-body.dark .disciplines { border-top-color: rgba(255,255,255,0.15); }
+.disciplines-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; }
+.project-body.dark .disciplines-label { color: #9fddbb; }
+.disciplines-list { font-size: 13px; color: var(--text-mid); }
+.project-body.dark .disciplines-list { color: #a8c8b0; }
+.funder-note { font-size: 12px; color: var(--text-light); margin-top: 20px; display: flex; align-items: center; gap: 6px; }
+.project-body.dark .funder-note { color: #9fddbb; }
+.funder-note::before { content: ''; width: 16px; height: 1.5px; background: currentColor; flex-shrink: 0; }
+
+/* COMING SOON */
+.coming-soon { background: var(--cream); border-top: 1px solid var(--border); padding: 64px 48px; text-align: center; }
+.coming-soon h3 { font-family: var(--font-head); font-size: 1.8rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+.coming-soon p { font-size: 15px; color: var(--text-mid); max-width: 480px; margin: 0 auto; }
+
+/* CTA */
+.cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.cta-grid p { font-size: 16px; color: #a8c8b0; line-height: 1.7; margin-bottom: 28px; }
+
+footer { background: var(--text); color: #888; padding: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.footer-logo { font-family: var(--font-head); font-size: 16px; font-weight: 800; text-transform: uppercase; color: #fff; letter-spacing: 0.04em; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 12px; color: #888; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: #fff; }
+.footer-copy { font-size: 12px; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 16px; }
+  .page-hero, .section { padding: 64px 24px; }
+  .page-hero-inner, .project, .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+  .project.reverse .project-img, .project.reverse .project-body { order: unset; }
+  .project-img { min-height: 56vw; }
+  .project-body { padding: 48px 28px; }
+  .funder-strip { padding: 24px; flex-wrap: wrap; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
 </style>
 </head>
 <body>
+
 <nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">A Global Classroom</a>
-    <div class="nav-links">
-      <a href="about.html">About</a>
-      <a href="programs.html">Programs</a>
-      <a href="projects.html" class="active">Projects</a>
-      <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank"><i class="ti ti-shopping-bag"></i> Store</a>
-    </div>
-    <a href="contact.html" class="nav-cta">Get in touch</a>
+  <a href="index.html" class="nav-logo">A Global Classroom</a>
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="projects.html" class="active">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank">Store &#8599;</a>
   </div>
+  <a href="contact.html" class="nav-btn">Get in touch</a>
 </nav>
 
-<div class="page">
-  <div class="hero" style="background:var(--yellow);">
-    <div class="hero-content" style="padding:56px 64px;">
-      <div class="eyebrow">Community projects</div>
-      <h1>Stories from the field,<br><em>rooted in community.</em></h1>
-      <p class="hero-sub">AGC partners with communities, local organizations, and educators to develop place-based curricula and learning resources grounded in real experiences, real voices, and real issues.</p>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="tag">Community projects</div>
+      <h1>Stories from the Field.</h1>
+    </div>
+    <div class="page-hero-text">
+      <p>AGC partners with communities, local organizations, and educators to develop place-based curricula and learning resources grounded in real experiences, real voices, and real issues.</p>
+      <p>Our projects connect the global to the local — centering the perspectives of communities on the frontlines of climate change, land rights, and environmental justice.</p>
     </div>
   </div>
-
-  <div class="partner-strip">
-    <i class="ti ti-heart"></i>
-    <p>Current projects are supported by the <strong>Earth Rising Foundation</strong>. We are grateful for their commitment to justice-centered education and community partnership.</p>
-  </div>
-
-  <div class="section">
-    <div class="section-label">Current projects</div>
-
-    <div class="project-card">
-      <div class="project-photo">
-        <i class="ti ti-camera ph-icon"></i>
-        <span class="ph-label">Project photo — women farmers, Gunungkidul</span>
-      </div>
-      <div class="project-body">
-        <div class="project-meta">
-          <span class="badge badge-green">Active</span>
-          <span class="project-location"><i class="ti ti-map-pin"></i> Gunungkidul, Java, Indonesia</span>
-          <span class="project-read">2 min read</span>
-        </div>
-        <h2>"FarmHer Stories"</h2>
-        <p class="project-subtitle">Water scarcity and climate adaptation in Gunungkidul, Indonesia</p>
-        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;">With support from the Earth Rising Foundation, A Global Classroom is partnering with communities in Gunungkidul Regency to develop a place-based curriculum focused on climate vulnerability, adaptation, and justice. Gunungkidul sits within a karst limestone landscape where rainwater drains rapidly underground, leaving many communities with limited access to surface water despite seasonal rainfall.</p>
-        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;">Women farmers are often bearing the brunt of these impacts — facing delayed rains, failed crops, mounting debt, and the burden of securing water for their households. At the same time, communities are responding through locally led adaptation strategies: rainwater harvesting, water-sharing networks, community greenhouses, and sustainable tourism initiatives.</p>
-        <p style="font-size:13px;color:var(--text-secondary);">"FarmHer Stories" invites students to explore climate change as both an environmental and a justice issue — integrating personal narrative, photography, climate science, human rights, and political economy.</p>
-        <div class="tags" style="margin-top:16px;">
-          <span class="tag tag-yellow">Climate justice</span>
-          <span class="tag tag-yellow">Women &amp; gender</span>
-          <span class="tag">Water scarcity</span>
-          <span class="tag">Community resilience</span>
-          <span class="tag">Place-based curriculum</span>
-        </div>
-        <div class="project-divider"></div>
-        <div class="disciplines-label">Curriculum integrates:</div>
-        <div class="tags">
-          <span class="tag tag-dark">Climate science</span>
-          <span class="tag tag-dark">Human rights</span>
-          <span class="tag tag-dark">Political economy</span>
-          <span class="tag tag-dark">Development studies</span>
-          <span class="tag tag-dark">Photography</span>
-        </div>
-        <div class="project-footer">
-          <span class="funder-note"><i class="ti ti-heart"></i> Supported by Earth Rising Foundation</span>
-          <a href="contact.html" class="btn btn-dark">Learn more ↗</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="project-card">
-      <div class="project-photo">
-        <i class="ti ti-camera ph-icon"></i>
-        <span class="ph-label">Project photo — Kalimantan rainforest or Dayak community</span>
-      </div>
-      <div class="project-body">
-        <div class="project-meta">
-          <span class="badge badge-green">Active</span>
-          <span class="project-location"><i class="ti ti-map-pin"></i> Kalimantan &amp; Jakarta, Indonesia</span>
-          <span class="project-read">1 min read</span>
-        </div>
-        <h2>Nusantara Project</h2>
-        <p class="project-subtitle">A curriculum on Indigenous land rights and the "sustainable" city</p>
-        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;">With support from the Earth Rising Foundation, AGC is collaborating with Indigenous communities and local partners in Kalimantan and Jakarta to develop an interdisciplinary curriculum centered on Indonesia's new capital city, Nusantara, as a case study in land rights, environmental change, and climate justice.</p>
-        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:10px;">Kalimantan is home to vast tropical rainforests and Indigenous Dayak communities whose land stewardship practices have shaped the region for generations. While the relocation of Indonesia's capital has been framed as a climate and sustainability solution, it raises critical questions about customary land rights, consent, displacement, and political inclusion.</p>
-        <p style="font-size:13px;color:var(--text-secondary);">Through interviews, photography, and video, the project will produce learning materials that encourage students to critically analyze competing narratives of "green development" and consider whose voices are prioritized in national and global climate debates.</p>
-        <div class="tags" style="margin-top:16px;">
-          <span class="tag tag-yellow">Indigenous rights</span>
-          <span class="tag tag-yellow">Land rights</span>
-          <span class="tag">Climate justice</span>
-          <span class="tag">Green development</span>
-          <span class="tag">Decolonial perspectives</span>
-        </div>
-        <div class="project-divider"></div>
-        <div class="disciplines-label">Curriculum integrates:</div>
-        <div class="tags">
-          <span class="tag tag-dark">Human rights law</span>
-          <span class="tag tag-dark">Environmental science</span>
-          <span class="tag tag-dark">Political economy</span>
-          <span class="tag tag-dark">Indigenous knowledge</span>
-          <span class="tag tag-dark">Photography &amp; video</span>
-        </div>
-        <div class="project-footer">
-          <span class="funder-note"><i class="ti ti-heart"></i> Supported by Earth Rising Foundation</span>
-          <a href="contact.html" class="btn btn-dark">Learn more ↗</a>
-        </div>
-      </div>
-    </div>
-
-    <div style="background:var(--bg-secondary);border:0.5px dashed #ccc;border-radius:var(--radius-lg);padding:40px;text-align:center;margin-bottom:40px;">
-      <i class="ti ti-clock" style="font-size:32px;color:#ccc;display:block;margin-bottom:12px;"></i>
-      <h3 style="margin-bottom:8px;">More projects coming soon</h3>
-      <p style="font-size:13px;color:var(--text-secondary);">We are developing new community partnerships and curricula — check back for updates, or get in touch to learn more about our work.</p>
-    </div>
-  </div>
-
-  <div class="cta-block">
-    <h2>Partner with us</h2>
-    <p>Interested in collaborating on a community project or curriculum initiative? We'd love to hear from you.</p>
-    <div class="btn-row center">
-      <a href="contact.html" class="btn btn-yellow">Get in touch ↗</a>
-      <a href="programs.html" class="btn btn-outline-light">Explore programs ↗</a>
-    </div>
-  </div>
-
-  <footer>
-    <span>© 2026 A Global Classroom</span>
-    <div class="footer-links">
-      <a href="about.html">About</a>
-      <a href="programs.html">Programs</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
-    </div>
-  </footer>
 </div>
+
+<!-- FUNDER STRIP -->
+<div class="funder-strip">
+  <img src="images/earth-rising-logo.png" alt="Earth Rising Foundation">
+  <p>Current projects are supported by the <strong>Earth Rising Foundation</strong> — committed to a people-powered approach to the climate crisis.</p>
+</div>
+
+<!-- PROJECT 1 — FARMHER STORIES -->
+<div class="project">
+  <div class="project-img">
+    <img src="images/IMG_2107.jpg" alt="Women farmers working together in a community garden, Gunungkidul">
+  </div>
+  <div class="project-body cream">
+    <div class="project-num">Project 01 — Active</div>
+    <h2>"FarmHer Stories"</h2>
+    <p class="project-subtitle">Water scarcity and climate adaptation in Gunungkidul, Indonesia</p>
+    <p>With support from the Earth Rising Foundation, A Global Classroom is partnering with communities in Gunungkidul Regency to develop a place-based curriculum focused on climate vulnerability, adaptation, and justice. Gunungkidul sits within a karst limestone landscape where rainwater drains rapidly underground, leaving many communities with limited access to surface water despite seasonal rainfall.</p>
+    <p>Women farmers are often bearing the brunt of these impacts — facing delayed rains, failed crops, mounting debt, and the burden of securing water for their households. At the same time, communities are responding through locally led adaptation strategies: rainwater harvesting, water-sharing networks, community greenhouses, and sustainable tourism initiatives.</p>
+    <p>"FarmHer Stories" invites students to explore climate change as both an environmental and a justice issue.</p>
+    <div class="project-tags">
+      <span class="tag-pill tag-yellow">Climate justice</span>
+      <span class="tag-pill tag-yellow">Women &amp; gender</span>
+      <span class="tag-pill tag-yellow">Water scarcity</span>
+      <span class="tag-pill tag-yellow">Community resilience</span>
+    </div>
+    <div class="disciplines">
+      <div class="disciplines-label">Curriculum integrates</div>
+      <div class="disciplines-list">Climate science · Human rights · Political economy · Development studies · Photography</div>
+    </div>
+    <div class="funder-note">Supported by the Earth Rising Foundation</div>
+  </div>
+</div>
+
+<!-- PROJECT 2 — NUSANTARA -->
+<div class="project reverse">
+  <div class="project-img">
+    <img src="images/nusantara.webp" alt="Nusantara — Indonesia's new capital city, Kalimantan">
+  </div>
+  <div class="project-body dark">
+    <div class="project-num">Project 02 — Active</div>
+    <h2>"The Nusantara Project"</h2>
+    <p class="project-subtitle">A curriculum on Indigenous land rights and the "sustainable" city</p>
+    <p>With support from the Earth Rising Foundation, AGC is collaborating with Indigenous communities and local partners in Kalimantan and Jakarta to develop an interdisciplinary curriculum centered on Indonesia's new capital city, Nusantara, as a case study in land rights, environmental change, and climate justice.</p>
+    <p>Kalimantan is home to vast tropical rainforests and Indigenous Dayak communities whose land stewardship practices have shaped the region for generations. While the relocation of Indonesia's capital has been framed as a climate and sustainability solution, it raises critical questions about customary land rights, consent, displacement, and political inclusion.</p>
+    <p>Through interviews, photography, and video, the project produces learning materials that encourage students to critically analyze competing narratives of "green development" and consider whose voices are prioritized in national and global climate debates.</p>
+    <div class="project-tags">
+      <span class="tag-pill tag-dark">Indigenous rights</span>
+      <span class="tag-pill tag-dark">Land rights</span>
+      <span class="tag-pill tag-dark">Climate justice</span>
+      <span class="tag-pill tag-dark">Green development</span>
+    </div>
+    <div class="disciplines">
+      <div class="disciplines-label">Curriculum integrates</div>
+      <div class="disciplines-list">Human rights law · Environmental science · Political economy · Indigenous knowledge · Photography &amp; video</div>
+    </div>
+    <div class="funder-note">Supported by the Earth Rising Foundation</div>
+  </div>
+</div>
+
+<!-- COMING SOON -->
+<div class="coming-soon">
+  <h3>More Projects Coming Soon</h3>
+  <p>We are developing new community partnerships and curricula. Get in touch to learn more about our work or explore collaboration opportunities.</p>
+</div>
+
+<!-- CTA -->
+<section class="section" style="background:var(--green);">
+  <div class="inner">
+    <div class="cta-grid">
+      <div>
+        <div class="tag light">Partner with us</div>
+        <h2 class="display" style="color:#fff;">Interested in Collaborating on a Community Project?</h2>
+      </div>
+      <div>
+        <p>We work with communities, schools, and organizations to develop place-based curricula rooted in justice, reciprocity, and genuine partnership. We'd love to hear from you.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="contact.html" class="btn-pill btn-pill-cream">Get in touch</a>
+          <a href="programs.html" class="btn-block btn-block-outline-light">Explore programs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">A Global Classroom</div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 A Global Classroom</div>
+</footer>
+
 </body>
 </html>

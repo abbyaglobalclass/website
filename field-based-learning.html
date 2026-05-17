@@ -3,147 +3,356 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Field-based Learning — A Global Classroom</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
-<link rel="stylesheet" href="styles.css">
+<title>Field-Based Learning — A Global Classroom</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --cream: #f0ebe4; --cream-dark: #e5ddd4; --green: #2d4a3e; --green-light: #3d6352; --text: #1a1a1a; --text-mid: #444; --text-light: #777; --border: #ddd6cc; --font-head: 'Barlow Condensed', 'Arial Narrow', sans-serif; --font-body: 'Barlow', Arial, sans-serif; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; line-height: 1.6; font-size: 16px; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { font-family: var(--font-head); font-size: 18px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-size: 13px; font-weight: 600; color: var(--text-mid); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--green); }
+.nav-store { color: var(--green) !important; }
+.nav-btn { background: var(--green); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 22px; border-radius: 3px; border: none; cursor: pointer; font-family: var(--font-body); transition: background 0.2s; display: inline-block; }
+.nav-btn:hover { background: var(--green-light); }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.tag::before { content: ''; width: 28px; height: 2px; background: var(--green); flex-shrink: 0; }
+.tag.light { color: #9fddbb; }
+.tag.light::before { background: #9fddbb; }
+.section { padding: 96px 48px; }
+.inner { max-width: 1200px; margin: 0 auto; }
+h2.display { font-family: var(--font-head); font-size: clamp(2.2rem, 3.5vw, 3.5rem); font-weight: 900; line-height: 0.95; text-transform: uppercase; margin-bottom: 24px; }
+.btn-pill { display: inline-flex; align-items: center; font-size: 14px; font-weight: 600; padding: 13px 28px; border-radius: 40px; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); border: none; }
+.btn-pill-cream { background: var(--cream-dark); color: var(--text); }
+.btn-pill-cream:hover { background: #d9d0c5; }
+.btn-block { display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 28px; border-radius: 3px; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
+.btn-block-outline { background: transparent; color: var(--text); border: 1.5px solid var(--text); }
+.btn-block-outline:hover { background: var(--text); color: #fff; }
+.btn-block-outline-light { background: transparent; color: #9fddbb; border: 1.5px solid #9fddbb; }
+
+/* FULL HERO */
+.full-hero { position: relative; height: 80vh; overflow: hidden; }
+.full-hero img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.full-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.1) 100%); display: flex; align-items: flex-end; padding: 80px 80px; }
+.full-hero-content { max-width: 600px; }
+.full-hero-content .tag { color: #9fddbb; }
+.full-hero-content .tag::before { background: #9fddbb; }
+.full-hero-content h1 { font-family: var(--font-head); font-size: clamp(3rem, 5vw, 5rem); font-weight: 900; line-height: 0.92; text-transform: uppercase; color: #fff; margin-bottom: 20px; }
+.full-hero-content p { font-size: 17px; color: rgba(255,255,255,0.85); max-width: 480px; line-height: 1.7; margin-bottom: 32px; }
+
+/* META BAR */
+.meta-bar { background: var(--green); display: grid; grid-template-columns: repeat(4, 1fr); }
+.meta-item { padding: 28px 32px; border-right: 1px solid rgba(255,255,255,0.1); }
+.meta-item:last-child { border-right: none; }
+.meta-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #9fddbb; margin-bottom: 6px; }
+.meta-value { font-size: 16px; font-weight: 500; color: #fff; }
+
+/* EDITORIAL */
+.editorial { display: grid; grid-template-columns: 1fr 1fr; }
+.ed-img { overflow: hidden; }
+.ed-img img { width: 100%; height: 100%; min-height: 520px; object-fit: cover; }
+.ed-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 72px; }
+.ed-content.cream { background: var(--cream); }
+.ed-content.dark { background: var(--green); }
+.ed-content blockquote { font-family: var(--font-head); font-size: clamp(1.6rem, 2.2vw, 2.2rem); font-weight: 800; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
+.ed-content.dark blockquote { color: #fff; }
+.ed-content p { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 16px; }
+.ed-content.dark p { color: #a8c8b0; }
+
+/* THEMES */
+.themes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.theme-item { background: #fff; padding: 36px 40px; }
+.theme-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-light); margin-bottom: 8px; }
+.theme-item h3 { font-family: var(--font-head); font-size: 1.4rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; line-height: 1; }
+.theme-item p { font-size: 14px; color: var(--text-mid); line-height: 1.65; }
+
+/* ITINERARY */
+.itinerary { display: flex; flex-direction: column; }
+.itin-item { display: flex; gap: 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+.itin-item:first-child { border-top: 1px solid var(--border); }
+.itin-num { font-family: var(--font-head); font-size: 1rem; font-weight: 800; min-width: 80px; padding: 22px 0; color: var(--text-light); flex-shrink: 0; text-transform: uppercase; }
+.itin-title { font-family: var(--font-head); font-size: 1.1rem; font-weight: 800; text-transform: uppercase; flex: 1; padding: 22px 0; line-height: 1.2; }
+.itin-body { display: none; padding: 0 0 20px 80px; font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+.itin-body.open { display: block; }
+.itin-arrow { padding: 22px 0; font-size: 20px; color: var(--text-light); transition: transform 0.2s; flex-shrink: 0; }
+.itin-item.open .itin-arrow { transform: rotate(90deg); }
+
+/* PHOTO GRID */
+.photo-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; height: 480px; }
+.photo-grid-2 .pg-item { overflow: hidden; }
+.photo-grid-2 .pg-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.photo-grid-2 .pg-item:hover img { transform: scale(1.04); }
+
+/* PARTNER + CTA */
+.partner-strip { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 48px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.partner-strip p { font-size: 15px; color: var(--text-mid); max-width: 600px; }
+.cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.cta-grid p { font-size: 16px; color: #a8c8b0; line-height: 1.7; margin-bottom: 28px; }
+
+footer { background: var(--text); color: #888; padding: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.footer-logo { font-family: var(--font-head); font-size: 16px; font-weight: 800; text-transform: uppercase; color: #fff; letter-spacing: 0.04em; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 12px; color: #888; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: #fff; }
+.footer-copy { font-size: 12px; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 16px; }
+  .full-hero { height: 70vw; }
+  .full-hero-overlay { padding: 40px 28px; }
+  .meta-bar { grid-template-columns: 1fr 1fr; }
+  .editorial { grid-template-columns: 1fr; }
+  .ed-img img { min-height: unset; height: 56vw; }
+  .ed-content { padding: 48px 28px; }
+  .themes-grid { grid-template-columns: 1fr; }
+  .section { padding: 64px 24px; }
+  .photo-grid-2 { grid-template-columns: 1fr; height: auto; }
+  .photo-grid-2 .pg-item { height: 56vw; }
+  .partner-strip { flex-direction: column; padding: 36px 24px; }
+  .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+</style>
 </head>
 <body>
+
 <nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">A Global Classroom</a>
-    <div class="nav-links">
-      <a href="about.html">About</a>
-      <a href="programs.html" class="active">Programs</a>
-      <a href="projects.html">Projects</a>
-      <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank"><i class="ti ti-shopping-bag"></i> Store</a>
-    </div>
-    <a href="contact.html" class="nav-cta">Get in touch</a>
+  <a href="index.html" class="nav-logo">A Global Classroom</a>
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="programs.html" class="active">Programs</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank">Store &#8599;</a>
   </div>
+  <a href="contact.html" class="nav-btn">Get in touch</a>
 </nav>
 
-<div class="page">
-  <div class="hero">
-    <div class="hero-img">
-      <i class="ti ti-camera ph-icon"></i>
-      <span class="ph-label">Hero photo — field study or community scene</span>
-    </div>
-    <div class="hero-content">
-      <div class="eyebrow">Field-based learning</div>
-      <h1>Learning from communities,<br><em>not just about them.</em></h1>
-      <p class="hero-sub">Immersive field study programs in Yogyakarta, Java — connecting global challenges to lived realities, and students to the people and communities at the heart of the issues they study.</p>
-      <div class="btn-row">
-        <a href="contact.html" class="btn btn-dark">Inquire about a program ↗</a>
-        <a href="java-field-study.html" class="btn btn-outline-dark">See sample itinerary ↗</a>
-      </div>
+<!-- FULL HERO -->
+<div class="full-hero">
+  <img src="images/borobudur.jpg" alt="Borobudur temple at sunrise, Yogyakarta, Java">
+  <div class="full-hero-overlay">
+    <div class="full-hero-content">
+      <div class="tag light">Field-based learning</div>
+      <h1>Learning From Communities, Not Just About Them.</h1>
+      <p>Immersive field study programs in Yogyakarta, Java — connecting global challenges to lived realities and students to the communities at the heart of the issues they study.</p>
+      <a href="contact.html" class="btn-pill btn-pill-cream">Inquire about a program</a>
     </div>
   </div>
-
-  <div class="section">
-    <div class="section-label">Program overview</div>
-    <div class="meta-grid">
-      <div class="meta-item"><div class="meta-label"><i class="ti ti-map-pin"></i> Location</div><div class="meta-value">Yogyakarta, Java, Indonesia</div></div>
-      <div class="meta-item"><div class="meta-label"><i class="ti ti-users"></i> Designed for</div><div class="meta-value">High school &amp; university students</div></div>
-      <div class="meta-item"><div class="meta-label"><i class="ti ti-calendar"></i> Duration</div><div class="meta-value">Customizable — contact us</div></div>
-      <div class="meta-item"><div class="meta-label"><i class="ti ti-settings"></i> Format</div><div class="meta-value">Fully customizable to your school &amp; curriculum</div></div>
-    </div>
-  </div>
-
-  <div class="quote-block">
-    <blockquote>All field studies are developed and delivered in close collaboration with local communities, whose members participate as teachers and knowledge holders — not simply as hosts.</blockquote>
-    <p>Participants learn directly from artists, farmers, academics, activists, and local leaders, engaging with local histories, livelihoods, cultural traditions, and environmental practices. Students are encouraged to move beyond simplistic narratives and recognize communities as knowledge holders, leaders, and agents of change.</p>
-  </div>
-
-  <div class="photo-strip">
-    <div class="strip-item">
-      <div class="ph-box" style="height:140px;"><i class="ti ti-camera ph-icon"></i><span class="ph-label">Community visit</span></div>
-      <div class="strip-label">Community visit</div>
-    </div>
-    <div class="strip-item">
-      <div class="ph-box" style="height:140px;"><i class="ti ti-camera ph-icon"></i><span class="ph-label">Field activity</span></div>
-      <div class="strip-label">Field activity</div>
-    </div>
-    <div class="strip-item">
-      <div class="ph-box" style="height:140px;"><i class="ti ti-camera ph-icon"></i><span class="ph-label">Student reflection</span></div>
-      <div class="strip-label">Student reflection</div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-label">What students explore</div>
-    <div class="grid-2">
-      <div class="card" style="padding:20px;display:flex;gap:14px;">
-        <div style="width:34px;height:34px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-world" style="font-size:17px;color:var(--green-dark);"></i></div>
-        <div><h3 style="font-size:14px;margin-bottom:5px;">Sustainable development</h3><p style="font-size:13px;color:var(--text-secondary);">How communities balance economic growth, cultural preservation, and environmental sustainability.</p></div>
-      </div>
-      <div class="card" style="padding:20px;display:flex;gap:14px;">
-        <div style="width:34px;height:34px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-cloud" style="font-size:17px;color:var(--green-dark);"></i></div>
-        <div><h3 style="font-size:14px;margin-bottom:5px;">Climate change &amp; adaptation</h3><p style="font-size:13px;color:var(--text-secondary);">How local communities experience and respond to the impacts of a changing climate.</p></div>
-      </div>
-      <div class="card" style="padding:20px;display:flex;gap:14px;">
-        <div style="width:34px;height:34px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-alert-triangle" style="font-size:17px;color:var(--green-dark);"></i></div>
-        <div><h3 style="font-size:14px;margin-bottom:5px;">Disaster risk</h3><p style="font-size:13px;color:var(--text-secondary);">How communities in high-risk environments build resilience and preparedness through local knowledge.</p></div>
-      </div>
-      <div class="card" style="padding:20px;display:flex;gap:14px;">
-        <div style="width:34px;height:34px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-scale" style="font-size:17px;color:var(--green-dark);"></i></div>
-        <div><h3 style="font-size:14px;margin-bottom:5px;">Human rights</h3><p style="font-size:13px;color:var(--text-secondary);">Connecting international frameworks to the real experiences of people working for justice and dignity.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="ph-box" style="height:240px;margin-bottom:56px;">
-    <i class="ti ti-camera ph-icon"></i>
-    <span class="ph-label">Editorial photo — students with community members in the field</span>
-  </div>
-
-  <div class="section">
-    <div class="section-label">Who students learn from</div>
-    <div class="prog-list">
-      <div class="prog-item" style="cursor:default;">
-        <div class="prog-dot"></div><span>Farmers and agricultural communities navigating climate pressures</span>
-      </div>
-      <div class="prog-item" style="cursor:default;">
-        <div class="prog-dot"></div><span>Artists and artisans rooted in local cultural traditions</span>
-      </div>
-      <div class="prog-item" style="cursor:default;">
-        <div class="prog-dot"></div><span>Academics and researchers working on regional development</span>
-      </div>
-      <div class="prog-item" style="cursor:default;">
-        <div class="prog-dot"></div><span>Activists and community organizers advancing justice and rights</span>
-      </div>
-      <div class="prog-item" style="cursor:default;">
-        <div class="prog-dot"></div><span>Local leaders and social entrepreneurs building sustainable livelihoods</span>
-      </div>
-      <div class="prog-item" style="cursor:default;">
-        <div class="prog-dot"></div><span>Educators and community organizations embedded in place-based knowledge</span>
-      </div>
-    </div>
-  </div>
-
-  <div class="partner-strip">
-    <i class="ti ti-handshake"></i>
-    <p>All programs are delivered in partnership with <strong>Via Via Travel</strong> — committed to responsible tourism, cultural exchange, and community-based travel experiences in Yogyakarta.</p>
-  </div>
-
-  <div class="cta-block">
-    <h2>Design your field study</h2>
-    <p>Every program is customized for your school, course, and learning goals. Contact us to start the conversation.</p>
-    <div class="btn-row center">
-      <a href="contact.html" class="btn btn-yellow">Get in touch ↗</a>
-      <a href="java-field-study.html" class="btn btn-outline-light">See sample itinerary ↗</a>
-    </div>
-  </div>
-
-  <footer>
-    <span>© 2026 A Global Classroom</span>
-    <div class="footer-links">
-      <a href="about.html">About</a>
-      <a href="programs.html">Programs</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
-    </div>
-  </footer>
 </div>
+
+<!-- META BAR -->
+<div class="meta-bar">
+  <div class="meta-item"><div class="meta-label">Location</div><div class="meta-value">Yogyakarta, Java, Indonesia</div></div>
+  <div class="meta-item"><div class="meta-label">Designed for</div><div class="meta-value">High school &amp; university students</div></div>
+  <div class="meta-item"><div class="meta-label">Duration</div><div class="meta-value">Customizable</div></div>
+  <div class="meta-item"><div class="meta-label">Format</div><div class="meta-value">Fully customizable to your school</div></div>
+</div>
+
+<!-- EDITORIAL -->
+<div class="editorial">
+  <div class="ed-img">
+    <img src="images/IMG_2240.jpg" alt="Students collaborating with a local teacher at Yabbiekayu">
+  </div>
+  <div class="ed-content cream">
+    <div class="tag">Our approach</div>
+    <blockquote>"All field studies are developed in close collaboration with local communities."</blockquote>
+    <p>Community members participate as teachers and knowledge holders — not simply as hosts. Participants learn directly from artists, farmers, academics, activists, and local leaders, engaging with local histories, livelihoods, cultural traditions, and environmental practices.</p>
+    <p>Students are encouraged to move beyond simplistic narratives and recognize communities as knowledge holders, leaders, and agents of change.</p>
+  </div>
+</div>
+
+<!-- THEMES -->
+<section class="section" style="background:#fff;">
+  <div class="inner">
+    <div class="tag">What students explore</div>
+    <h2 class="display" style="margin-bottom:40px;">Program Themes.</h2>
+    <div class="themes-grid">
+      <div class="theme-item">
+        <div class="theme-num">01</div>
+        <h3>Climate Justice &amp; Adaptation</h3>
+        <p>How communities experience and respond to climate change — water scarcity, agricultural disruption, disaster risk, and locally led resilience strategies.</p>
+      </div>
+      <div class="theme-item">
+        <div class="theme-num">02</div>
+        <h3>Sustainable Development</h3>
+        <p>How communities balance economic growth, cultural preservation, and environmental sustainability across urban, rural, and coastal environments.</p>
+      </div>
+      <div class="theme-item">
+        <div class="theme-num">03</div>
+        <h3>Human Rights &amp; Justice</h3>
+        <p>Connecting international human rights frameworks to the real experiences of people working for dignity, equity, and accountability in their communities.</p>
+      </div>
+      <div class="theme-item">
+        <div class="theme-num">04</div>
+        <h3>Community &amp; Livelihoods</h3>
+        <p>Understanding local knowledge systems, cultural traditions, and how communities sustain themselves — from farmers and artisans to activists and entrepreneurs.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GRID -->
+<div class="photo-grid-2">
+  <div class="pg-item"><img src="images/meal.jpg" alt="Students sharing a community meal in Java"></div>
+  <div class="pg-item"><img src="images/unis-students.jpg" alt="Students gathered at the Gamelan house"></div>
+</div>
+
+<!-- ITINERARY -->
+<section class="section" style="background:var(--cream);">
+  <div class="inner">
+    <div class="tag">Sample itinerary</div>
+    <h2 class="display" style="margin-bottom:12px;">Ten Days in Java.</h2>
+    <p style="font-size:15px;color:var(--text-mid);margin-bottom:40px;max-width:560px;">A sample 10-day program — all AGC field studies are fully customizable for your school, curriculum, and learning goals.</p>
+    <div class="itinerary">
+      <div class="itin-item" onclick="toggleItin(this)">
+        <div class="itin-num">Day 1</div>
+        <div class="itin-title">Arrival in Yogyakarta</div>
+        <div class="itin-arrow">&#8594;</div>
+      </div>
+      <div class="itin-body">Orientation, welcome dinner, and introduction to program themes and learning goals.</div>
+
+      <div class="itin-item" onclick="toggleItin(this)">
+        <div class="itin-num">Day 2</div>
+        <div class="itin-title">Yogyakarta — history, politics &amp; development</div>
+        <div class="itin-arrow">&#8594;</div>
+      </div>
+      <div class="itin-body">Cultural orientation and guided walking tour exploring the city's history, urban development, and political landscape.</div>
+
+      <div class="itin-item" onclick="toggleItin(this)">
+        <div class="itin-num">Day 3</div>
+        <div class="itin-title">Yabbiekayu &amp; sustainable design</div>
+        <div class="itin-arrow">&#8594;</div>
+      </div>
+      <div class="itin-body">Explore eco-architecture, local food systems, and social enterprise at Yabbiekayu Eco-Bungalows in Tembi Village.</div>
+
+      <div class="itin-item" onclick="toggleItin(this)">
+        <div class="itin-num">Day 4</div>
+        <div class="itin-title">Tembi village &amp; community-based tourism</div>
+        <div class="itin-arrow">&#8594;</div>
+      </div>
+      <div class="itin-body">Workshops with local artisans, batik makers, and community leaders on sustainable livelihoods and community-based tourism.</div>
+
+      <div class="itin-item" onclick="toggleItin(this)">
+        <div class="itin-num">Day 5</div>
+        <div class="itin-title">Gunungkidul — climate adaptation</div>
+        <div class="itin-arrow">&#8594;</div>
+      </div>
+      <div class="itin-body">Community visits focused on water scarcity, farming under climate stress, and locally led adaptation strategies in the karst highlands.</div>
+
+      <div class="itin-item" onclick="toggleItin(this)">
+        <div class="itin-num">Day 6</div>
+        <div class="itin-title">Women farmers &amp; climate justice</div>
+        <div class="itin-arrow">&#8594;</div>
+      </div>
+      <div class="itin-body">Interviews, photography, and storytelling focused on gendered climate impacts and the leadership of women in community resilience.</div>
+
+      <div class="itin-item" onclick="toggleItin(this)">
+        <div class="itin-num">Day 7</div>
+        <div class="itin-title">Reflection &amp; project development</div>
+        <div class="itin-arrow">&#8594;</div>
+      </div>
+      <div class="itin-body">Students organize fieldwork notes, interview recordings, and inquiry questions into their final project frameworks.</div>
+
+      <div class="itin-item" onclick="toggleItin(this)">
+        <div class="itin-num">Day 8</div>
+        <div class="itin-title">Merapi &amp; disaster risk</div>
+        <div class="itin-arrow">&#8594;</div>
+      </div>
+      <div class="itin-body">Explore disaster preparedness, local knowledge systems, and community resilience in the shadow of an active volcano.</div>
+
+      <div class="itin-item" onclick="toggleItin(this)">
+        <div class="itin-num">Day 9</div>
+        <div class="itin-title">Student project workshop</div>
+        <div class="itin-arrow">&#8594;</div>
+      </div>
+      <div class="itin-body">Students develop their final projects — photo essays, podcasts, short documentaries, oral histories, or policy briefs.</div>
+
+      <div class="itin-item" onclick="toggleItin(this)">
+        <div class="itin-num">Day 10</div>
+        <div class="itin-title">Final presentations &amp; closing</div>
+        <div class="itin-arrow">&#8594;</div>
+      </div>
+      <div class="itin-body">Students share their learning with the group and reflect on responsibility, justice, and action as global citizens.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO STRIP -->
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;height:380px;">
+  <div style="overflow:hidden;"><img src="images/IMG_0896.jpg" alt="Local youth at sunset in the rice fields" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
+  <div style="overflow:hidden;"><img src="images/IMG_2154_copy.jpg" alt="Welcome sign for UNIS students at Lab Sedusun" style="width:100%;height:100%;object-fit:cover;"></div>
+  <div style="overflow:hidden;"><img src="images/IMG_2094.jpg" alt="Students with kittens during a community visit" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
+</div>
+
+<!-- EDITORIAL — COMMUNITY -->
+<div class="editorial">
+  <div class="ed-content dark">
+    <div class="tag light">Community partners</div>
+    <blockquote>Students learn from — not just about — the communities they visit.</blockquote>
+    <p>Farmers, artisans, activists, academics, and local leaders all participate as knowledge holders. These relationships are built on respect, reciprocity, and a genuine commitment to learning that benefits both visitors and host communities.</p>
+    <a href="contact.html" class="btn-block btn-block-outline-light" style="align-self:flex-start;">Inquire about a program</a>
+  </div>
+  <div class="ed-img">
+    <img src="images/sdn-unis-40.jpg" alt="Community member laughing with program participants">
+  </div>
+</div>
+
+<!-- PARTNER STRIP -->
+<div class="partner-strip">
+  <div>
+    <div class="tag" style="margin-bottom:8px;">In partnership with</div>
+    <p>All AGC programs are delivered in partnership with <strong>Via Via Travel</strong> — an organization committed to responsible tourism, cultural exchange, and community-based travel in Yogyakarta.</p>
+  </div>
+  <a href="contact.html" class="btn-pill btn-pill-cream" style="flex-shrink:0;">Get in touch</a>
+</div>
+
+<!-- CTA -->
+<section class="section" style="background:var(--green);">
+  <div class="inner">
+    <div class="cta-grid">
+      <div>
+        <div class="tag light">Design your field study</div>
+        <h2 class="display" style="color:#fff;">Built Around Your School &amp; Curriculum.</h2>
+      </div>
+      <div>
+        <p>Every AGC field study is customized for your school, course, and learning goals. Contact us to start designing your program.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="contact.html" class="btn-pill btn-pill-cream">Get in touch</a>
+          <a href="programs.html" class="btn-block btn-block-outline-light">See all programs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">A Global Classroom</div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 A Global Classroom</div>
+</footer>
+
+<script>
+function toggleItin(item) {
+  var body = item.nextElementSibling;
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.itin-item.open').forEach(function(i) { i.classList.remove('open'); });
+  document.querySelectorAll('.itin-body.open').forEach(function(b) { b.classList.remove('open'); });
+  if (!isOpen) { item.classList.add('open'); body.classList.add('open'); }
+}
+</script>
 </body>
 </html>

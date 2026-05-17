@@ -4,148 +4,196 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — A Global Classroom</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-bottom:56px; }
-  .form-block { display:flex; flex-direction:column; gap:16px; }
-  .form-group label { display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px; }
-  .form-group input, .form-group textarea, .form-group select {
-    width:100%; font-family:var(--font-sans); font-size:14px;
-    border:0.5px solid var(--border); border-radius:var(--radius-sm);
-    padding:10px 14px; background:#fff; color:var(--text-primary);
-    outline:none; transition:border-color 0.2s;
-  }
-  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color:var(--green-mid); }
-  .form-group textarea { height:130px; resize:vertical; }
-  .info-block { display:flex; flex-direction:column; gap:24px; }
-  .info-item { display:flex; align-items:flex-start; gap:14px; }
-  .info-icon { width:38px; height:38px; background:var(--yellow); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
-  .info-icon i { font-size:18px; color:var(--green-dark); }
-  .info-label { font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-secondary); font-weight:600; margin-bottom:3px; }
-  .info-value { font-size:14px; }
-  .info-value a { color:var(--green-dark); font-weight:500; }
-  .social-row { display:flex; gap:8px; margin-top:6px; }
-  .social-btn { display:flex; align-items:center; gap:6px; padding:7px 14px; border-radius:var(--radius-sm); font-size:13px; font-weight:500; background:var(--bg-secondary); border:0.5px solid var(--border); color:var(--text-primary); text-decoration:none; transition:background 0.2s; }
-  .social-btn:hover { background:#eee; }
-  .reason-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:40px; }
-  .reason-card { background:var(--bg-secondary); border-radius:var(--radius-md); padding:20px; text-align:center; }
-  .reason-card i { font-size:24px; color:var(--green-dark); margin-bottom:10px; display:block; }
-  .reason-card span { font-size:13px; color:var(--text-secondary); }
-  @media(max-width:768px) { .contact-grid { grid-template-columns:1fr; } .reason-grid { grid-template-columns:1fr; } }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --cream: #f0ebe4; --cream-dark: #e5ddd4; --green: #2d4a3e; --green-light: #3d6352; --text: #1a1a1a; --text-mid: #444; --text-light: #777; --border: #ddd6cc; --font-head: 'Barlow Condensed', 'Arial Narrow', sans-serif; --font-body: 'Barlow', Arial, sans-serif; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; line-height: 1.6; font-size: 16px; }
+a { text-decoration: none; color: inherit; }
+nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { font-family: var(--font-head); font-size: 18px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-size: 13px; font-weight: 600; color: var(--text-mid); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--green); }
+.nav-store { color: var(--green) !important; }
+.nav-btn { background: var(--green); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 22px; border-radius: 3px; border: none; cursor: pointer; font-family: var(--font-body); transition: background 0.2s; display: inline-block; }
+.nav-btn:hover { background: var(--green-light); }
+
+/* PAGE LAYOUT */
+.contact-page { max-width: 1200px; margin: 0 auto; padding: 96px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
+
+/* LEFT — HEADING + INFO */
+.contact-left { position: sticky; top: 96px; }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.tag::before { content: ''; width: 28px; height: 2px; background: var(--green); flex-shrink: 0; }
+.contact-left h1 { font-family: var(--font-head); font-size: clamp(3rem, 4.5vw, 5rem); font-weight: 900; line-height: 0.92; text-transform: uppercase; margin-bottom: 28px; }
+.contact-left p { font-size: 16px; color: var(--text-mid); line-height: 1.75; margin-bottom: 48px; max-width: 380px; }
+
+.info-list { display: flex; flex-direction: column; gap: 28px; }
+.info-item { display: flex; flex-direction: column; gap: 4px; }
+.info-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--green); }
+.info-value { font-size: 15px; color: var(--text); }
+.info-value a { color: var(--text); border-bottom: 1px solid var(--border); transition: border-color 0.2s; }
+.info-value a:hover { border-color: var(--green); }
+.social-row { display: flex; gap: 12px; margin-top: 4px; }
+.social-btn { font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 40px; background: var(--cream); color: var(--text); border: 1px solid var(--border); transition: background 0.2s; }
+.social-btn:hover { background: var(--cream-dark); }
+.divider { height: 0.5px; background: var(--border); margin: 40px 0; }
+
+/* RIGHT — FORM */
+.contact-form { display: flex; flex-direction: column; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-mid); }
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-color: var(--green); }
+.form-group textarea { height: 160px; resize: vertical; line-height: 1.6; }
+.submit-btn {
+  background: var(--green);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s;
+  align-self: flex-start;
+}
+.submit-btn:hover { background: var(--green-light); }
+
+/* FOOTER */
+footer { background: var(--text); color: #888; padding: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-top: 1px solid var(--border); }
+.footer-logo { font-family: var(--font-head); font-size: 16px; font-weight: 800; text-transform: uppercase; color: #fff; letter-spacing: 0.04em; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 12px; color: #888; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: #fff; }
+.footer-copy { font-size: 12px; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 16px; }
+  .contact-page { grid-template-columns: 1fr; gap: 56px; padding: 64px 24px; }
+  .contact-left { position: static; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
 </style>
 </head>
 <body>
+
 <nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">A Global Classroom</a>
-    <div class="nav-links">
-      <a href="about.html">About</a>
-      <a href="programs.html">Programs</a>
-      <a href="projects.html">Projects</a>
-      <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank"><i class="ti ti-shopping-bag"></i> Store</a>
-    </div>
-    <a href="contact.html" class="nav-cta active">Get in touch</a>
+  <a href="index.html" class="nav-logo">A Global Classroom</a>
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html" class="active">Contact</a>
+    <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank">Store &#8599;</a>
   </div>
+  <a href="contact.html" class="nav-btn">Get in touch</a>
 </nav>
 
-<div class="page">
-  <div class="hero" style="background:var(--yellow);">
-    <div class="hero-content" style="padding:56px 64px;">
-      <div class="eyebrow">Contact</div>
-      <h1>Let's start a<br><em>conversation.</em></h1>
-      <p class="hero-sub">Whether you're a teacher, school, or organization — we'd love to hear from you. Reach out about programs, curriculum, partnerships, or anything else.</p>
+<div class="contact-page">
+
+  <!-- LEFT -->
+  <div class="contact-left">
+    <div class="tag">Contact</div>
+    <h1>Let's Start a Conversation.</h1>
+    <p>Whether you're a teacher, school, or organization — we'd love to hear from you. Reach out about programs, curriculum, partnerships, or anything else.</p>
+
+    <div class="info-list">
+      <div class="info-item">
+        <div class="info-label">Email</div>
+        <div class="info-value"><a href="mailto:admin@aglobalclassroom.com">admin@aglobalclassroom.com</a></div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-label">Follow us</div>
+        <div class="social-row" style="flex-wrap:wrap;">
+          <a href="#" class="social-btn">Instagram</a>
+          <a href="#" class="social-btn">Facebook</a>
+          <a href="#" class="social-btn">Pinterest</a>
+          <a href="#" class="social-btn">Flipboard</a>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Classroom resources</div>
+        <div class="info-value"><a href="https://aglobalclassroom.com/lessons" target="_blank">Visit the AGC store &#8599;</a></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div style="font-size:13px;color:var(--text-light);line-height:1.7;">
+      All programs are customizable for your school, course, and learning goals. We typically respond within 2–3 business days.
     </div>
   </div>
 
-  <div class="reason-grid">
-    <div class="reason-card">
-      <i class="ti ti-map-2"></i>
-      <span>Inquire about a field study or educator retreat</span>
+  <!-- RIGHT — FORM -->
+  <div class="contact-form">
+    <div class="form-group">
+      <label class="form-label">Your name</label>
+      <input type="text" placeholder="Your name">
     </div>
-    <div class="reason-card">
-      <i class="ti ti-books"></i>
-      <span>Ask about curriculum or classroom resources</span>
+    <div class="form-group">
+      <label class="form-label">Email address</label>
+      <input type="email" placeholder="you@school.org">
     </div>
-    <div class="reason-card">
-      <i class="ti ti-heart-handshake"></i>
-      <span>Explore a partnership or collaboration</span>
+    <div class="form-group">
+      <label class="form-label">Organisation / school</label>
+      <input type="text" placeholder="School or organisation name">
     </div>
+    <div class="form-group">
+      <label class="form-label">I'm reaching out about</label>
+      <select>
+        <option value="">Select one</option>
+        <option>A student field study or program</option>
+        <option>An educator retreat</option>
+        <option>Classroom curriculum</option>
+        <option>A partnership or collaboration</option>
+        <option>Something else</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Message</label>
+      <textarea placeholder="Tell us a bit about your school, students, or what you're looking for..."></textarea>
+    </div>
+    <button class="submit-btn">Send message</button>
   </div>
 
-  <div class="contact-grid">
-    <div class="form-block">
-      <div class="form-group">
-        <label>Your name</label>
-        <input type="text" placeholder="Your name" />
-      </div>
-      <div class="form-group">
-        <label>Email address</label>
-        <input type="email" placeholder="you@school.org" />
-      </div>
-      <div class="form-group">
-        <label>I'm reaching out about</label>
-        <select>
-          <option>A field study or program</option>
-          <option>Classroom curriculum</option>
-          <option>Educator retreat</option>
-          <option>Partnership or collaboration</option>
-          <option>Something else</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>Message</label>
-        <textarea placeholder="Tell us a bit about your school, students, or what you're looking for..."></textarea>
-      </div>
-      <button class="btn btn-dark" style="width:100%;justify-content:center;">Send message</button>
-    </div>
-
-    <div class="info-block">
-      <div class="info-item">
-        <div class="info-icon"><i class="ti ti-mail"></i></div>
-        <div>
-          <div class="info-label">Email</div>
-          <div class="info-value"><a href="mailto:hello@aglobalclassroom.com">hello@aglobalclassroom.com</a></div>
-        </div>
-      </div>
-      <div class="info-item">
-        <div class="info-icon"><i class="ti ti-map-pin"></i></div>
-        <div>
-          <div class="info-label">Based in</div>
-          <div class="info-value">New York, USA &amp; Yogyakarta, Indonesia</div>
-        </div>
-      </div>
-      <div class="info-item">
-        <div class="info-icon"><i class="ti ti-share"></i></div>
-        <div>
-          <div class="info-label">Follow us</div>
-          <div class="social-row">
-            <a href="#" class="social-btn"><i class="ti ti-brand-instagram"></i> Instagram</a>
-            <a href="#" class="social-btn"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
-          </div>
-        </div>
-      </div>
-      <div class="info-item">
-        <div class="info-icon"><i class="ti ti-shopping-bag"></i></div>
-        <div>
-          <div class="info-label">Classroom resources</div>
-          <div class="info-value"><a href="https://aglobalclassroom.com/lessons" target="_blank">Visit the AGC store ↗</a></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <span>© 2026 A Global Classroom</span>
-    <div class="footer-links">
-      <a href="about.html">About</a>
-      <a href="programs.html">Programs</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
-    </div>
-  </footer>
 </div>
+
+<footer>
+  <div class="footer-logo">A Global Classroom</div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 A Global Classroom</div>
+</footer>
+
 </body>
 </html>

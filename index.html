@@ -4,165 +4,295 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A Global Classroom</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream: #f0ebe4;
+  --cream-dark: #e5ddd4;
+  --green: #2d4a3e;
+  --green-light: #3d6352;
+  --text: #1a1a1a;
+  --text-mid: #444;
+  --text-light: #777;
+  --border: #ddd6cc;
+  --font-head: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'Barlow', Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; line-height: 1.6; font-size: 16px; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* NAV */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: #fff; border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px;
+}
+.nav-logo { font-family: var(--font-head); font-size: 18px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-size: 13px; font-weight: 600; color: var(--text-mid); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover { color: var(--green); }
+.nav-store { color: var(--green) !important; }
+.nav-btn { background: var(--green); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 22px; border-radius: 3px; border: none; cursor: pointer; font-family: var(--font-body); transition: background 0.2s; display: inline-block; }
+.nav-btn:hover { background: var(--green-light); }
+
+/* HERO */
+.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 92vh; }
+.hero-img { overflow: hidden; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+.hero-content { background: var(--cream); display: flex; flex-direction: column; justify-content: center; padding: 80px 72px; }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.tag::before { content: ''; width: 28px; height: 2px; background: var(--green); flex-shrink: 0; }
+.tag.light { color: #9fddbb; }
+.tag.light::before { background: #9fddbb; }
+.hero h1 { font-family: var(--font-head); font-size: clamp(2.8rem, 4.5vw, 4.5rem); font-weight: 900; line-height: 0.95; text-transform: uppercase; color: var(--text); margin-bottom: 28px; }
+.hero-sub { font-size: 16px; color: var(--text-mid); line-height: 1.7; max-width: 400px; margin-bottom: 40px; }
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-pill { display: inline-flex; align-items: center; font-size: 14px; font-weight: 600; padding: 13px 28px; border-radius: 40px; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); border: none; }
+.btn-pill-cream { background: var(--cream-dark); color: var(--text); }
+.btn-pill-cream:hover { background: #d9d0c5; }
+.btn-pill-green { background: var(--green); color: #fff; }
+.btn-pill-green:hover { background: var(--green-light); }
+.btn-block { display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 28px; border-radius: 3px; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); border: none; }
+.btn-block-green { background: var(--green); color: #fff; }
+.btn-block-green:hover { background: var(--green-light); }
+.btn-block-outline { background: transparent; color: var(--text); border: 1.5px solid var(--text); }
+.btn-block-outline:hover { background: var(--text); color: #fff; }
+.btn-block-outline-light { background: transparent; color: #9fddbb; border: 1.5px solid #9fddbb; }
+
+/* LAYOUT */
+.section { padding: 96px 48px; }
+.inner { max-width: 1200px; margin: 0 auto; }
+h2.display { font-family: var(--font-head); font-size: clamp(2.2rem, 3.5vw, 3.5rem); font-weight: 900; line-height: 0.95; text-transform: uppercase; margin-bottom: 24px; }
+h2.display.light { color: #fff; }
+
+/* OFFERINGS */
+.offerings { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); }
+.offering { padding: 48px; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+.offering:nth-child(even) { border-right: none; }
+.offering-img { height: 260px; overflow: hidden; margin-bottom: 28px; }
+.offering-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.offering:hover .offering-img img { transform: scale(1.04); }
+.offering-num { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--text-light); margin-bottom: 8px; }
+.offering h3 { font-family: var(--font-head); font-size: 2rem; font-weight: 800; text-transform: uppercase; margin-bottom: 14px; line-height: 1; }
+.offering p { font-size: 15px; color: var(--text-mid); line-height: 1.7; margin-bottom: 28px; }
+
+/* EDITORIAL */
+.editorial { display: grid; grid-template-columns: 1fr 1fr; }
+.ed-img { overflow: hidden; }
+.ed-img img { width: 100%; height: 100%; min-height: 560px; object-fit: cover; }
+.ed-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 72px; }
+.ed-content.cream { background: var(--cream); }
+.ed-content.dark { background: var(--green); }
+.ed-content blockquote { font-family: var(--font-head); font-size: clamp(1.6rem, 2.2vw, 2.2rem); font-weight: 800; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
+.ed-content.dark blockquote { color: #fff; }
+.ed-content p { font-size: 15px; color: var(--text-mid); line-height: 1.7; margin-bottom: 28px; }
+.ed-content.dark p { color: #a8c8b0; }
+
+/* PROGRAMS */
+.prog-list { display: flex; flex-direction: column; }
+.prog-row { display: flex; align-items: center; gap: 28px; padding: 26px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: inherit; transition: padding-left 0.2s; }
+.prog-row:first-child { border-top: 1px solid var(--border); }
+.prog-row:hover { padding-left: 10px; }
+.prog-n { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: var(--text-light); min-width: 28px; }
+.prog-title { font-family: var(--font-head); font-size: 1.6rem; font-weight: 800; text-transform: uppercase; flex: 1; }
+.prog-detail { font-size: 14px; color: var(--text-mid); max-width: 320px; }
+.prog-row .arrow { font-size: 22px; color: var(--text-light); transition: transform 0.2s; }
+.prog-row:hover .arrow { transform: translateX(5px); }
+
+/* PHOTO GRID */
+.photo-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 280px 280px; gap: 3px; }
+.pg-item { overflow: hidden; }
+.pg-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.pg-item:hover img { transform: scale(1.05); }
+.pg-tall { grid-row: span 2; }
+
+/* STORE STRIP */
+.store-strip { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 44px 48px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.store-strip h3 { font-family: var(--font-head); font-size: 2rem; font-weight: 800; text-transform: uppercase; margin-bottom: 6px; }
+.store-strip p { font-size: 15px; color: var(--text-mid); max-width: 520px; }
+
+/* CTA */
+.cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.cta-grid p { font-size: 16px; color: #a8c8b0; line-height: 1.7; margin-bottom: 28px; }
+
+/* FOOTER */
+footer { background: var(--text); color: #888; padding: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.footer-logo { font-family: var(--font-head); font-size: 16px; font-weight: 800; text-transform: uppercase; color: #fff; letter-spacing: 0.04em; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 12px; color: #888; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: #fff; }
+.footer-copy { font-size: 12px; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 20px; gap: 16px; }
+  .nav-links { gap: 16px; }
+  .hero, .editorial, .offerings, .cta-grid { grid-template-columns: 1fr; }
+  .hero-img, .ed-img { height: 60vw; }
+  .hero-img img, .ed-img img { min-height: unset; }
+  .hero-content, .ed-content { padding: 48px 28px; }
+  .section { padding: 64px 24px; }
+  .offering { border-right: none; }
+  .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+  .pg-tall { grid-row: span 1; }
+  .store-strip { flex-direction: column; padding: 40px 24px; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+</style>
 </head>
 <body>
+
 <nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">A Global Classroom</a>
-    <div class="nav-links">
-      <a href="about.html">About</a>
-      <a href="programs.html">Programs</a>
-      <a href="projects.html">Projects</a>
-      <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank"><i class="ti ti-shopping-bag"></i> Store</a>
-    </div>
-    <a href="contact.html" class="nav-cta">Get in touch</a>
+  <a href="index.html" class="nav-logo">A Global Classroom</a>
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank">Store ↗</a>
   </div>
+  <a href="contact.html" class="nav-btn">Get in touch</a>
 </nav>
 
-<div class="page">
-  <div class="hero">
-    <div class="hero-img">
-      <i class="ti ti-camera ph-icon"></i>
-      <span class="ph-label">Hero photo — wide landscape or community scene</span>
-    </div>
-    <div class="hero-content">
-      <div class="eyebrow">Justice-centered education</div>
-      <h1>Global challenges.<br><em>Local voices.</em><br>Shared learning.</h1>
-      <p class="hero-sub">We connect classrooms to communities through justice-centered curriculum and immersive real-world learning — from New York to Indonesia and beyond.</p>
-      <div class="btn-row">
-        <a href="programs.html" class="btn btn-dark">Explore programs ↗</a>
-        <a href="https://aglobalclassroom.com/lessons" class="btn btn-outline-dark" target="_blank">Browse the store ↗</a>
-      </div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-img">
+    <img src="images/hero.png" alt="Women in community gathering, laughing together">
+  </div>
+  <div class="hero-content">
+    <div class="tag">Justice-centered education</div>
+    <h1>Global Challenges.<br>Local Voices.<br>Shared Learning.</h1>
+    <p class="hero-sub">We connect classrooms to communities through justice-centered curriculum and immersive real-world learning — from New York to Indonesia and beyond.</p>
+    <div class="btn-row">
+      <a href="programs.html" class="btn-pill btn-pill-cream">Explore programs</a>
+      <a href="https://aglobalclassroom.com/lessons" class="btn-pill btn-pill-green" target="_blank">Browse the store ↗</a>
     </div>
   </div>
-
-  <div class="section">
-    <div class="section-label">What we offer</div>
-    <div class="grid-2">
-      <div class="card featured">
-        <div class="card-img">
-          <i class="ti ti-camera ph-icon"></i>
-          <span class="ph-label">Classroom / curriculum photo</span>
-        </div>
-        <div class="card-body">
-          <span class="badge badge-yellow"><i class="ti ti-shopping-bag"></i> Available in the AGC store</span>
-          <h3>Classroom curricula</h3>
-          <p style="font-size:13px;color:var(--text-secondary);margin:8px 0 14px;">Inquiry-driven lessons, units, and semester courses — no prep required, digital and editable.</p>
-          <div class="tags">
-            <span class="tag tag-green">Global politics</span>
-            <span class="tag tag-green">Human rights</span>
-            <span class="tag">Climate justice</span>
-            <span class="tag">IB support</span>
-          </div>
-          <a href="https://aglobalclassroom.com/lessons" class="btn-store-sm" target="_blank"><i class="ti ti-external-link"></i> Visit the AGC store</a>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img">
-          <i class="ti ti-camera ph-icon"></i>
-          <span class="ph-label">Field study / students photo</span>
-        </div>
-        <div class="card-body">
-          <h3>Field studies &amp; programs</h3>
-          <p style="font-size:13px;color:var(--text-secondary);margin:8px 0 14px;">Immersive learning that connects students directly to communities affected by the issues they study.</p>
-          <div class="tags">
-            <span class="tag tag-green">Field studies</span>
-            <span class="tag">Community partnerships</span>
-            <span class="tag">Educator retreats</span>
-          </div>
-          <a href="programs.html" class="btn-outline-green">Explore programs ↗</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="quote-block">
-    <blockquote>"Learning grounded in real communities, real voices, and real issues — from the classroom to the field."</blockquote>
-    <p>We work with teachers, schools, and organizations to create meaningful educational experiences that connect classrooms to the world.</p>
-  </div>
-
-  <div class="ph-box" style="height:260px;margin-bottom:56px;">
-    <i class="ti ti-camera ph-icon"></i>
-    <span class="ph-label">Editorial photo — e.g. students with farmer in Gunungkidul</span>
-  </div>
-
-  <div class="section">
-    <div class="section-label">Where we work</div>
-    <div class="grid-3">
-      <div class="card">
-        <div class="card-img" style="height:110px;">
-          <i class="ti ti-camera ph-icon"></i><span class="ph-label">New York photo</span>
-        </div>
-        <div class="card-body">
-          <div style="font-size:14px;font-weight:500;margin-bottom:3px;">New York</div>
-          <div style="font-size:12px;color:var(--text-secondary);">Curriculum &amp; school partnerships</div>
-        </div>
-      </div>
-      <div class="card featured" style="border-color:var(--yellow);">
-        <div class="card-img" style="height:110px;background:var(--yellow);border-bottom-color:#ccc900;">
-          <i class="ti ti-camera" style="font-size:22px;color:var(--green-dark);"></i>
-          <span style="font-size:11px;color:var(--green-dark);">Java photo</span>
-        </div>
-        <div class="card-body" style="background:#fffde0;">
-          <div style="font-size:14px;font-weight:500;margin-bottom:3px;color:var(--heading-on-yellow);">Java, Indonesia</div>
-          <div style="font-size:12px;color:var(--body-on-yellow);">Field studies &amp; community programs</div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-img" style="height:110px;">
-          <i class="ti ti-camera ph-icon"></i><span class="ph-label">Global photo</span>
-        </div>
-        <div class="card-body">
-          <div style="font-size:14px;font-weight:500;margin-bottom:3px;">Beyond</div>
-          <div style="font-size:12px;color:var(--text-secondary);">Educator retreats &amp; global partnerships</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-label">Programs</div>
-    <div class="prog-list">
-      <a href="field-based-learning.html" class="prog-item">
-        <div class="prog-dot"></div>
-        <div><div class="prog-name">Field-based learning</div><div class="prog-desc">Experiential, place-based education rooted in community partnership</div></div>
-        <i class="ti ti-arrow-right prog-arrow"></i>
-      </a>
-      <a href="java-field-study.html" class="prog-item">
-        <div class="prog-dot"></div>
-        <div><div class="prog-name">Java, Indonesia field study</div><div class="prog-desc">Climate justice, community resilience &amp; sustainable development</div></div>
-        <i class="ti ti-arrow-right prog-arrow"></i>
-      </a>
-      <a href="educator-retreats.html" class="prog-item">
-        <div class="prog-dot"></div>
-        <div><div class="prog-name">Educator retreats</div><div class="prog-desc">Professional learning experiences for teachers and schools</div></div>
-        <i class="ti ti-arrow-right prog-arrow"></i>
-      </a>
-    </div>
-  </div>
-
-  <div class="cta-block">
-    <h2>Ready to connect your classroom to the world?</h2>
-    <p>Whether you need curriculum or an immersive field experience, we'd love to hear from you.</p>
-    <div class="btn-row center">
-      <a href="contact.html" class="btn btn-yellow">Get in touch ↗</a>
-      <a href="https://aglobalclassroom.com/lessons" class="btn btn-outline-light" target="_blank">Visit the store ↗</a>
-    </div>
-  </div>
-
-  <footer>
-    <span>© 2026 A Global Classroom</span>
-    <div class="footer-links">
-      <a href="about.html">About</a>
-      <a href="programs.html">Programs</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
-    </div>
-  </footer>
 </div>
+
+<!-- WHAT WE DO -->
+<section class="section" style="background:#fff;">
+  <div class="inner">
+    <div class="tag">What we do</div>
+    <h2 class="display" style="max-width:640px;margin-bottom:48px;">Curriculum &amp; Community-Based Learning</h2>
+    <div class="offerings">
+      <div class="offering">
+        <div class="offering-img"><img src="images/sdn-unis-60.jpg" alt="Women farmers in garden"></div>
+        <div class="offering-num">01</div>
+        <h3>Classroom Resources</h3>
+        <p>Inquiry-driven lessons, units, and semester courses for high school and college educators. Source-based, no prep required, digital and editable — exploring global politics, human rights, climate justice, and more.</p>
+        <a href="https://aglobalclassroom.com/lessons" class="btn-block btn-block-green" target="_blank">Visit the Store ↗</a>
+      </div>
+      <div class="offering">
+        <div class="offering-img"><img src="images/sdn-unis-70.jpg" alt="Students meeting with community members in Java"></div>
+        <div class="offering-num">02</div>
+        <h3>Field Studies &amp; Programs</h3>
+        <p>Immersive learning experiences that connect students directly to the people and communities most affected by the issues they study. Field studies and community-based learning in Java, Indonesia.</p>
+        <a href="programs.html" class="btn-block btn-block-outline">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- PROGRAMS LIST -->
+<section class="section" style="background:var(--cream);">
+  <div class="inner">
+    <div class="tag">Programs</div>
+    <h2 class="display" style="margin-bottom:48px;">From the Classroom<br>to the Community</h2>
+    <div class="prog-list">
+      <a href="field-based-learning.html" class="prog-row">
+        <span class="prog-n">01</span>
+        <span class="prog-title">Student Field Studies</span>
+        <span class="prog-detail">Immersive 10–21 day programs in Java, Indonesia — place-based learning on climate justice, human rights &amp; community resilience</span>
+        <span class="arrow">→</span>
+      </a>
+      <a href="educator-retreats.html" class="prog-row">
+        <span class="prog-n">02</span>
+        <span class="prog-title">Educator Retreats</span>
+        <span class="prog-detail">Field-based professional learning for teachers — explore new pedagogy, learn alongside community partners, and bring deeper perspectives back to your classroom</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GRID -->
+<div class="photo-grid">
+  <div class="pg-item pg-tall">
+    <img src="images/sdn-unis-80.jpg" alt="Students walking through a village in Java">
+  </div>
+  <div class="pg-item">
+    <img src="images/reading.jpg" alt="Student reading with local children">
+  </div>
+  <div class="pg-item">
+    <img src="images/siyono.jpg" alt="Educators at a community site in Java">
+  </div>
+</div>
+
+<!-- EDITORIAL COMMUNITY -->
+<div class="editorial">
+  <div class="ed-content dark" style="order:-1;">
+    <div class="tag light">Community projects</div>
+    <blockquote>"FarmHer Stories" &amp; "The Nusantara Project"</blockquote>
+    <p>With support from the Earth Rising Foundation, AGC develops place-based curricula in partnership with frontline communities — centering climate justice, Indigenous land rights, and the voices of those most affected by global change.</p>
+    <a href="projects.html" class="btn-block" style="background:var(--cream);color:var(--green);align-self:flex-start;">See our projects</a>
+  </div>
+  <div class="ed-img">
+    <img src="images/sdn-unis-60.jpg" alt="Women farmers in Gunungkidul">
+  </div>
+</div>
+
+<!-- STORE STRIP -->
+<div class="store-strip">
+  <div>
+    <h3>Classroom Resources</h3>
+    <p>Explore ready-to-use lessons in Global Politics, Human Rights, Climate Justice, Peace &amp; Conflict, and International Development.</p>
+  </div>
+  <div style="flex-shrink:0;">
+    <a href="https://aglobalclassroom.com/lessons" class="btn-pill btn-pill-cream" target="_blank">Explore Lessons ↗</a>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="section" style="background:var(--green);">
+  <div class="inner">
+    <div class="cta-grid">
+      <div>
+        <div class="tag light">Get in touch</div>
+        <h2 class="display light">Ready to Connect Your Classroom to the World?</h2>
+      </div>
+      <div>
+        <p>Whether you're looking for curriculum, planning a field study, or exploring a partnership — we'd love to hear from you. All programs are customized for your school and learning goals.</p>
+        <div class="btn-row">
+          <a href="contact.html" class="btn-pill btn-pill-cream">Get in touch</a>
+          <a href="programs.html" class="btn-block-outline-light btn-block">Explore programs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">A Global Classroom</div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
+  </div>
+  <div class="footer-copy">© 2026 A Global Classroom</div>
+</footer>
+
 </body>
 </html>

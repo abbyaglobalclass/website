@@ -4,158 +4,261 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — A Global Classroom</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --cream: #f0ebe4; --cream-dark: #e5ddd4; --green: #2d4a3e; --green-light: #3d6352; --text: #1a1a1a; --text-mid: #444; --text-light: #777; --border: #ddd6cc; --font-head: 'Barlow Condensed', 'Arial Narrow', sans-serif; --font-body: 'Barlow', Arial, sans-serif; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; line-height: 1.6; font-size: 16px; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { font-family: var(--font-head); font-size: 18px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-size: 13px; font-weight: 600; color: var(--text-mid); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--green); }
+.nav-store { color: var(--green) !important; }
+.nav-btn { background: var(--green); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 22px; border-radius: 3px; border: none; cursor: pointer; font-family: var(--font-body); transition: background 0.2s; display: inline-block; }
+.nav-btn:hover { background: var(--green-light); }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.tag::before { content: ''; width: 28px; height: 2px; background: var(--green); flex-shrink: 0; }
+.tag.light { color: #9fddbb; }
+.tag.light::before { background: #9fddbb; }
+.section { padding: 96px 48px; }
+.inner { max-width: 1200px; margin: 0 auto; }
+h2.display { font-family: var(--font-head); font-size: clamp(2.2rem, 3.5vw, 3.5rem); font-weight: 900; line-height: 0.95; text-transform: uppercase; margin-bottom: 24px; }
+.btn-pill { display: inline-flex; align-items: center; font-size: 14px; font-weight: 600; padding: 13px 28px; border-radius: 40px; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); border: none; }
+.btn-pill-cream { background: var(--cream-dark); color: var(--text); }
+.btn-pill-cream:hover { background: #d9d0c5; }
+.btn-block { display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 28px; border-radius: 3px; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
+.btn-block-outline-light { background: transparent; color: #9fddbb; border: 1.5px solid #9fddbb; }
+.btn-block-outline-light:hover { background: #9fddbb; color: var(--green); }
+
+/* PAGE HERO */
+.page-hero { background: var(--cream); padding: 96px 48px 80px; border-bottom: 1px solid var(--border); }
+.page-hero-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: end; }
+.page-hero h1 { font-family: var(--font-head); font-size: clamp(3rem, 5vw, 5.5rem); font-weight: 900; line-height: 0.92; text-transform: uppercase; }
+.page-hero-text p { font-size: 17px; color: var(--text-mid); line-height: 1.75; margin-bottom: 16px; }
+
+/* MISSION */
+.mission-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.mission-left p { font-size: 16px; color: var(--text-mid); line-height: 1.8; margin-bottom: 18px; }
+.mission-right h3 { font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; text-transform: uppercase; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 12px; }
+.value-row { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border); }
+.value-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-light); min-width: 24px; }
+.value-name { font-family: var(--font-head); font-size: 1.2rem; font-weight: 800; text-transform: uppercase; flex: 1; }
+.value-desc { font-size: 13px; color: var(--text-mid); max-width: 180px; text-align: right; }
+
+/* EDITORIAL */
+.editorial { display: grid; grid-template-columns: 1fr 1fr; }
+.ed-img { overflow: hidden; }
+.ed-img img { width: 100%; height: 100%; min-height: 500px; object-fit: cover; }
+.ed-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 72px; background: var(--green); }
+.ed-content blockquote { font-family: var(--font-head); font-size: clamp(1.6rem, 2.2vw, 2.2rem); font-weight: 800; text-transform: uppercase; line-height: 1.1; color: #fff; margin-bottom: 20px; }
+.ed-content p { font-size: 15px; color: #a8c8b0; line-height: 1.75; margin-bottom: 28px; }
+
+/* TEAM */
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.team-card { position: relative; overflow: hidden; }
+.team-img { height: 400px; overflow: hidden; }
+.team-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 0.5s; }
+.team-card:hover .team-img img { transform: scale(1.04); }
+.team-base { padding: 18px 20px 22px; background: #fff; border-bottom: 1px solid var(--border); }
+.team-role { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 4px; }
+.team-name { font-family: var(--font-head); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; line-height: 1; }
+.team-overlay { position: absolute; inset: 0; background: var(--green); color: #fff; padding: 24px; display: flex; flex-direction: column; justify-content: flex-end; opacity: 0; transition: opacity 0.3s; }
+.team-card:hover .team-overlay { opacity: 1; }
+.o-role { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #9fddbb; margin-bottom: 5px; }
+.o-name { font-family: var(--font-head); font-size: 1.4rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; line-height: 1; }
+.o-bio { font-size: 12px; color: #c8ddd0; line-height: 1.6; margin-bottom: 10px; }
+.o-edu { font-size: 11px; color: #7ab090; font-style: italic; border-top: 0.5px solid #3d6352; padding-top: 10px; }
+
+/* PARTNERS */
+.partners-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.partner-card { overflow: hidden; }
+.partner-img { height: 400px; overflow: hidden; }
+.partner-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.partner-card:hover .partner-img img { transform: scale(1.04); }
+.partner-base { padding: 18px 24px 22px; background: var(--cream); border-bottom: 1px solid var(--border); }
+.partner-role { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 4px; }
+.partner-name { font-family: var(--font-head); font-size: 1.3rem; font-weight: 800; text-transform: uppercase; line-height: 1; }
+
+/* WIDE PHOTO */
+.wide-photo { height: 480px; overflow: hidden; }
+.wide-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+
+/* CTA */
+.cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.cta-grid p { font-size: 16px; color: #a8c8b0; line-height: 1.7; margin-bottom: 28px; }
+
+/* FOOTER */
+footer { background: var(--text); color: #888; padding: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.footer-logo { font-family: var(--font-head); font-size: 16px; font-weight: 800; text-transform: uppercase; color: #fff; letter-spacing: 0.04em; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 12px; color: #888; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: #fff; }
+.footer-copy { font-size: 12px; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 16px; }
+  .page-hero, .section { padding: 64px 24px; }
+  .page-hero-inner, .mission-cols, .editorial, .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+  .ed-img img { min-height: unset; height: 56vw; }
+  .ed-content { padding: 48px 28px; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .partners-grid { grid-template-columns: 1fr; }
+  .wide-photo { height: 56vw; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+</style>
 </head>
 <body>
+
 <nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">A Global Classroom</a>
-    <div class="nav-links">
-      <a href="about.html" class="active">About</a>
-      <a href="programs.html">Programs</a>
-      <a href="projects.html">Projects</a>
-      <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank"><i class="ti ti-shopping-bag"></i> Store</a>
-    </div>
-    <a href="contact.html" class="nav-cta">Get in touch</a>
+  <a href="index.html" class="nav-logo">A Global Classroom</a>
+  <div class="nav-links">
+    <a href="about.html" class="active">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank">Store &#8599;</a>
   </div>
+  <a href="contact.html" class="nav-btn">Get in touch</a>
 </nav>
 
-<div class="page">
-  <div class="hero">
-    <div class="hero-img">
-      <i class="ti ti-camera ph-icon"></i>
-      <span class="ph-label">Hero photo — team, classroom, or field scene</span>
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div>
+      <div class="tag">About us</div>
+      <h1>Justice-Centered Education, Rooted in Community.</h1>
     </div>
-    <div class="hero-content">
-      <div class="eyebrow">About us</div>
-      <h1>Justice-centered education,<br><em>rooted in community.</em></h1>
-      <p class="hero-sub">A Global Classroom develops justice-centered curriculum for the classroom and immersive learning experiences rooted in human rights and sustainable development — from New York to Indonesia and beyond.</p>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-label">What drives us</div>
-    <div class="grid-2">
-      <div class="card" style="padding:24px;">
-        <div style="width:38px;height:38px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-          <i class="ti ti-books" style="font-size:20px;color:var(--green-dark);"></i>
-        </div>
-        <h3 style="margin-bottom:8px;">Inquiry-driven learning</h3>
-        <p style="font-size:13px;color:var(--text-secondary);">Source-based resources exploring global politics, climate justice, inequality, peace and conflict, and human rights through real-world case studies and diverse perspectives.</p>
-      </div>
-      <div class="card" style="padding:24px;">
-        <div style="width:38px;height:38px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-          <i class="ti ti-heart-handshake" style="font-size:20px;color:var(--green-dark);"></i>
-        </div>
-        <h3 style="margin-bottom:8px;">Community partnership</h3>
-        <p style="font-size:13px;color:var(--text-secondary);">We partner with communities to design field studies and place-based educational experiences that connect students directly to the people most affected by the issues they study.</p>
-      </div>
-      <div class="card" style="padding:24px;">
-        <div style="width:38px;height:38px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-          <i class="ti ti-world" style="font-size:20px;color:var(--green-dark);"></i>
-        </div>
-        <h3 style="margin-bottom:8px;">Global to local</h3>
-        <p style="font-size:13px;color:var(--text-secondary);">We work with teachers, schools, and organizations to create meaningful experiences that connect classrooms to the world — grounded in respect, reciprocity, and justice.</p>
-      </div>
-      <div class="card" style="padding:24px;">
-        <div style="width:38px;height:38px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;">
-          <i class="ti ti-scale" style="font-size:20px;color:var(--green-dark);"></i>
-        </div>
-        <h3 style="margin-bottom:8px;">Justice-centered pedagogy</h3>
-        <p style="font-size:13px;color:var(--text-secondary);">Every resource and experience centers justice — asking students to engage critically with power, inequality, and the lived experiences of communities around the world.</p>
-      </div>
+    <div class="page-hero-text">
+      <p>A Global Classroom develops justice-centered curriculum for the classroom and immersive learning experiences rooted in human rights and sustainable development.</p>
+      <p>We create inquiry-driven resources exploring global politics, climate justice, inequality, international relations, peace and conflict, and human rights through real-world case studies, relevant concepts, and diverse perspectives.</p>
     </div>
   </div>
-
-  <div class="values-strip">
-    <div class="value-pill">Respect</div>
-    <div class="value-pill">Reciprocity</div>
-    <div class="value-pill">Justice</div>
-    <div class="value-pill">Community</div>
-    <div class="value-pill">Inquiry</div>
-  </div>
-
-  <div class="ph-box" style="height:220px;margin-bottom:56px;">
-    <i class="ti ti-camera ph-icon"></i>
-    <span class="ph-label">Team or program photo</span>
-  </div>
-
-  <div class="section">
-    <div class="section-label">Meet the team</div>
-    <div class="grid-2">
-
-      <div class="card">
-        <div class="card-img" style="height:180px;">
-          <i class="ti ti-camera ph-icon"></i><span class="ph-label">Photo of Abby</span>
-        </div>
-        <div class="card-body">
-          <div style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-dark);font-weight:600;margin-bottom:4px;">Founder, Program Director &amp; Curriculum Writer</div>
-          <div style="font-family:var(--font-serif);font-size:1.2rem;margin-bottom:10px;">Abby MacPhail</div>
-          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">An award-winning educator, curriculum designer, and founder of AGC. Abby leads curriculum development, field-based programs, partnerships, and educator training with over 20 years of teaching experience across Canada, the US, Italy, France, Croatia, South Africa, Kenya, and Indonesia.</p>
-          <div style="font-size:11px;color:#aaa;font-style:italic;padding-top:10px;border-top:0.5px solid var(--border);">M.Ed, University of Cape Town · MA, SIT Graduate Institute · BEd, OISE/University of Toronto</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-img" style="height:180px;">
-          <i class="ti ti-camera ph-icon"></i><span class="ph-label">Photo of Naila</span>
-        </div>
-        <div class="card-body">
-          <div style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-dark);font-weight:600;margin-bottom:4px;">Digital Communication &amp; Storytelling</div>
-          <div style="font-family:var(--font-serif);font-size:1.2rem;margin-bottom:10px;">Naila Madina</div>
-          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">Naila leads AGC's digital communications and storytelling. With backgrounds in communications and international relations, she brings experience from the Pratisara Bumi Foundation, Women's Earth Alliance, and international programs including YSEALI and the AIS Forum.</p>
-          <div style="font-size:11px;color:#aaa;font-style:italic;padding-top:10px;border-top:0.5px solid var(--border);">BA in International Relations, Prof. Dr. Moestopo University</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-img" style="height:180px;">
-          <i class="ti ti-camera ph-icon"></i><span class="ph-label">Photo of Yellow</span>
-        </div>
-        <div class="card-body">
-          <div style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-dark);font-weight:600;margin-bottom:4px;">Operations &amp; Finance</div>
-          <div style="font-family:var(--font-serif);font-size:1.2rem;margin-bottom:10px;">Yellow Prinsis</div>
-          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">Yellow supports AGC's operations and financial administration — strengthening internal systems and ensuring programs run efficiently. Her background spans women's leadership, sustainable entrepreneurship, and climate justice through her work at Pratisara Bumi Foundation and Fab Lab Bali.</p>
-          <div style="font-size:11px;color:#aaa;font-style:italic;padding-top:10px;border-top:0.5px solid var(--border);">Background in managerial accounting &amp; finance operations</div>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-img" style="height:180px;">
-          <i class="ti ti-camera ph-icon"></i><span class="ph-label">Photo of Julia</span>
-        </div>
-        <div class="card-body">
-          <div style="font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-dark);font-weight:600;margin-bottom:4px;">Intern, Research &amp; Curriculum Development</div>
-          <div style="font-family:var(--font-serif);font-size:1.2rem;margin-bottom:10px;">Julia Bhalla</div>
-          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px;">Julia supports lesson design, research, writing, and editing across AGC's peace, conflict, human rights, and international justice curricula — translating complex legal frameworks into classroom-ready materials.</p>
-          <div style="font-size:11px;color:#aaa;font-style:italic;padding-top:10px;border-top:0.5px solid var(--border);">BA in Political Science &amp; International Development, McGill University</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="cta-block">
-    <h2>Work with us</h2>
-    <p>Whether you're a teacher, school, or organization — we'd love to connect.</p>
-    <div class="btn-row center">
-      <a href="contact.html" class="btn btn-yellow">Get in touch ↗</a>
-      <a href="programs.html" class="btn btn-outline-light">Explore programs ↗</a>
-    </div>
-  </div>
-
-  <footer>
-    <span>© 2026 A Global Classroom</span>
-    <div class="footer-links">
-      <a href="about.html">About</a>
-      <a href="programs.html">Programs</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
-    </div>
-  </footer>
 </div>
+
+<!-- MISSION -->
+<section class="section" style="background:#fff;">
+  <div class="inner">
+    <div class="mission-cols">
+      <div class="mission-left">
+        <div class="tag">What drives us</div>
+        <h2 class="display" style="margin-bottom:28px;">Learning Grounded in Real Communities.</h2>
+        <p>Beyond the classroom, we partner with communities to design field studies, experiential learning opportunities, and place-based educational experiences that connect students and teachers directly to the people and places most affected by the issues they study.</p>
+        <p>We work with teachers, schools, and organizations to create meaningful educational experiences that connect classrooms to the world — from New York to Indonesia and beyond.</p>
+        <p>Community members are approached not as passive recipients of help, but as individuals and communities with knowledge, resilience, creativity, and important perspectives to share. Our goal is to create learning experiences rooted in listening, reflection, humility, and genuine human connection.</p>
+      </div>
+      <div class="mission-right">
+        <h3>Our values</h3>
+        <div class="value-row"><span class="value-num">01</span><span class="value-name">Respect</span><span class="value-desc">For communities, knowledge, and lived experience</span></div>
+        <div class="value-row"><span class="value-num">02</span><span class="value-name">Reciprocity</span><span class="value-desc">Mutual exchange and shared learning</span></div>
+        <div class="value-row"><span class="value-num">03</span><span class="value-name">Justice</span><span class="value-desc">Centering equity, rights, and accountability</span></div>
+        <div class="value-row"><span class="value-num">04</span><span class="value-name">Community</span><span class="value-desc">Rooted in partnership and belonging</span></div>
+        <div class="value-row"><span class="value-num">05</span><span class="value-name">Inquiry</span><span class="value-desc">Curiosity, evidence, and open questions</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<div class="editorial">
+  <div class="ed-img">
+    <img src="images/tembi-tour.jpg" alt="Students on a community tour in Tembi Village">
+  </div>
+  <div class="ed-content">
+    <div class="tag light">Our approach</div>
+    <blockquote>"We connect classrooms to communities — not just as places to visit, but as places to learn from."</blockquote>
+    <p>Community members participate as teachers and knowledge holders. Participants learn directly from artists, farmers, academics, activists, and local leaders — engaging with local histories, livelihoods, cultural traditions, and environmental practices.</p>
+    <a href="programs.html" class="btn-block btn-block-outline-light" style="align-self:flex-start;">Explore programs</a>
+  </div>
+</div>
+
+<!-- TEAM -->
+<section class="section" style="background:#fff;padding-bottom:0;">
+  <div class="inner" style="margin-bottom:48px;">
+    <div class="tag">The team</div>
+    <h2 class="display">Meet the People Behind AGC.</h2>
+  </div>
+</section>
+
+<div class="team-grid">
+  <div class="team-card">
+    <div class="team-img"><img src="images/abby.png" alt="Abby MacPhail"></div>
+    <div class="team-base"><div class="team-role">Founder &amp; Program Director</div><div class="team-name">Abby MacPhail</div></div>
+    <div class="team-overlay">
+      <div class="o-role">Founder &amp; Program Director</div>
+      <div class="o-name">Abby MacPhail</div>
+      <p class="o-bio">Educator, curriculum designer, and Founder of AGC. Specializes in IB Global Politics, Human Rights, Peace and Conflict, and Development with 20+ years of teaching experience across Canada, the US, Italy, France, Croatia, South Africa, Kenya, and Indonesia. Grants from the Pulitzer Center and Learning for Justice / SPLC.</p>
+      <div class="o-edu">M.Ed (Distinction) UCT &middot; MA SIT &middot; BEd OISE/Toronto &middot; BA Dalhousie</div>
+    </div>
+  </div>
+  <div class="team-card">
+    <div class="team-img"><img src="images/naila.png" alt="Naila Madina"></div>
+    <div class="team-base"><div class="team-role">Digital Communication &amp; Storytelling</div><div class="team-name">Naila Madina</div></div>
+    <div class="team-overlay">
+      <div class="o-role">Digital Communication &amp; Storytelling</div>
+      <div class="o-name">Naila Madina</div>
+      <p class="o-bio">Leads AGC's digital communications and storytelling. Driven by a commitment to environmental and cultural preservation, she brings experience from Pratisara Bumi Foundation, Women's Earth Alliance, YSEALI, and the AIS Forum — promoting traditional knowledge and community-led conservation across Indonesia.</p>
+      <div class="o-edu">BA International Relations, Prof. Dr. Moestopo University</div>
+    </div>
+  </div>
+  <div class="team-card">
+    <div class="team-img"><img src="images/yellow.png" alt="Yellow Prinsis Dayani"></div>
+    <div class="team-base"><div class="team-role">Operations &amp; Finance</div><div class="team-name">Yellow Prinsis</div></div>
+    <div class="team-overlay">
+      <div class="o-role">Operations &amp; Finance</div>
+      <div class="o-name">Yellow Prinsis Dayani</div>
+      <p class="o-bio">Supports AGC's operations and financial administration, strengthening internal systems and ensuring programs run efficiently. Her work centers on women's leadership, sustainable entrepreneurship, and climate justice through her roles at Pratisara Bumi Foundation and Fab Lab Bali.</p>
+      <div class="o-edu">Background in managerial accounting &amp; finance operations</div>
+    </div>
+  </div>
+  <div class="team-card">
+    <div class="team-img"><img src="images/julia.png" alt="Julia Bhalla"></div>
+    <div class="team-base"><div class="team-role">Research &amp; Curriculum Development</div><div class="team-name">Julia Bhalla</div></div>
+    <div class="team-overlay">
+      <div class="o-role">Research &amp; Curriculum Development</div>
+      <div class="o-name">Julia Bhalla</div>
+      <p class="o-bio">Supports lesson design, research, writing, and editing across AGC's peace, conflict, human rights, and international justice curricula — translating complex legal frameworks into classroom-ready materials. Applying to law school to pursue a career in international law and human rights advocacy.</p>
+      <div class="o-edu">BA Political Science &amp; International Development, McGill University</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="section" style="background:var(--green);">
+  <div class="inner">
+    <div class="cta-grid">
+      <div>
+        <div class="tag light">Work with us</div>
+        <h2 class="display" style="color:#fff;">Bring AGC to Your School or Organization.</h2>
+      </div>
+      <div>
+        <p>Whether you're a teacher, school, or organization — we'd love to connect. Reach out about curriculum, field studies, partnerships, or anything else.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="contact.html" class="btn-pill btn-pill-cream">Get in touch</a>
+          <a href="programs.html" class="btn-block btn-block-outline-light">Explore programs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">A Global Classroom</div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 A Global Classroom</div>
+</footer>
+
 </body>
 </html>

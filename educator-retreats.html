@@ -4,119 +4,258 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Educator Retreats — A Global Classroom</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --cream: #f0ebe4; --cream-dark: #e5ddd4; --green: #2d4a3e; --green-light: #3d6352; --text: #1a1a1a; --text-mid: #444; --text-light: #777; --border: #ddd6cc; --font-head: 'Barlow Condensed', 'Arial Narrow', sans-serif; --font-body: 'Barlow', Arial, sans-serif; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--text); background: #fff; line-height: 1.6; font-size: 16px; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+nav { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--border); padding: 0 48px; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-logo { font-family: var(--font-head); font-size: 18px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; color: var(--green); }
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a { font-size: 13px; font-weight: 600; color: var(--text-mid); letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--green); }
+.nav-store { color: var(--green) !important; }
+.nav-btn { background: var(--green); color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 22px; border-radius: 3px; border: none; cursor: pointer; font-family: var(--font-body); transition: background 0.2s; display: inline-block; }
+.nav-btn:hover { background: var(--green-light); }
+.tag { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--green); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+.tag::before { content: ''; width: 28px; height: 2px; background: var(--green); flex-shrink: 0; }
+.tag.light { color: #9fddbb; }
+.tag.light::before { background: #9fddbb; }
+.section { padding: 96px 48px; }
+.inner { max-width: 1200px; margin: 0 auto; }
+h2.display { font-family: var(--font-head); font-size: clamp(2.2rem, 3.5vw, 3.5rem); font-weight: 900; line-height: 0.95; text-transform: uppercase; margin-bottom: 24px; }
+.btn-pill { display: inline-flex; align-items: center; font-size: 14px; font-weight: 600; padding: 13px 28px; border-radius: 40px; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); border: none; }
+.btn-pill-cream { background: var(--cream-dark); color: var(--text); }
+.btn-pill-cream:hover { background: #d9d0c5; }
+.btn-block { display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 13px 28px; border-radius: 3px; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
+.btn-block-outline { background: transparent; color: var(--text); border: 1.5px solid var(--text); }
+.btn-block-outline:hover { background: var(--text); color: #fff; }
+.btn-block-outline-light { background: transparent; color: #9fddbb; border: 1.5px solid #9fddbb; }
+
+/* HERO */
+.hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 80vh; }
+.hero-img { overflow: hidden; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; }
+.hero-content { background: var(--cream); display: flex; flex-direction: column; justify-content: center; padding: 80px 72px; }
+.hero h1 { font-family: var(--font-head); font-size: clamp(2.8rem, 4.5vw, 4.5rem); font-weight: 900; line-height: 0.95; text-transform: uppercase; color: var(--text); margin-bottom: 24px; }
+.hero-sub { font-size: 16px; color: var(--text-mid); line-height: 1.7; max-width: 420px; margin-bottom: 32px; }
+
+/* META BAR */
+.meta-bar { background: var(--green); display: grid; grid-template-columns: repeat(4, 1fr); }
+.meta-item { padding: 28px 32px; border-right: 1px solid rgba(255,255,255,0.1); }
+.meta-item:last-child { border-right: none; }
+.meta-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #9fddbb; margin-bottom: 6px; }
+.meta-value { font-size: 16px; font-weight: 500; color: #fff; }
+
+/* GAINS */
+.gains-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.gain-item { background: #fff; padding: 40px; }
+.gain-num { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--text-light); margin-bottom: 8px; }
+.gain-item h3 { font-family: var(--font-head); font-size: 1.5rem; font-weight: 800; text-transform: uppercase; margin-bottom: 12px; line-height: 1; }
+.gain-item p { font-size: 15px; color: var(--text-mid); line-height: 1.7; }
+
+/* EDITORIAL */
+.editorial { display: grid; grid-template-columns: 1fr 1fr; }
+.ed-img { overflow: hidden; }
+.ed-img img { width: 100%; height: 100%; min-height: 520px; object-fit: cover; }
+.ed-content { display: flex; flex-direction: column; justify-content: center; padding: 80px 72px; }
+.ed-content.cream { background: var(--cream); }
+.ed-content.dark { background: var(--green); }
+.ed-content blockquote { font-family: var(--font-head); font-size: clamp(1.6rem, 2.2vw, 2.2rem); font-weight: 800; text-transform: uppercase; line-height: 1.1; margin-bottom: 20px; }
+.ed-content.dark blockquote { color: #fff; }
+.ed-content p { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin-bottom: 16px; }
+.ed-content.dark p { color: #a8c8b0; }
+
+/* YABBIEKAYU */
+.yab-block { display: grid; grid-template-columns: 1fr 1fr; }
+.yab-img { overflow: hidden; height: 480px; }
+.yab-img img { width: 100%; height: 100%; object-fit: cover; }
+.yab-content { background: var(--green); display: flex; flex-direction: column; justify-content: center; padding: 64px 72px; }
+.yab-content h3 { font-family: var(--font-head); font-size: 2.2rem; font-weight: 800; text-transform: uppercase; color: #fff; margin-bottom: 16px; line-height: 1; }
+.yab-content p { font-size: 15px; color: #a8c8b0; line-height: 1.75; margin-bottom: 12px; }
+.yab-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #9fddbb; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+.yab-label::before { content: ''; width: 20px; height: 2px; background: #9fddbb; }
+
+/* PHOTO STRIP */
+.photo-strip-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; height: 360px; }
+.ps-item { overflow: hidden; }
+.ps-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.ps-item:hover img { transform: scale(1.05); }
+
+/* PARTNER + CTA */
+.partner-strip { background: var(--cream); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 36px 48px; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.partner-strip p { font-size: 15px; color: var(--text-mid); max-width: 600px; }
+.cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+.cta-grid p { font-size: 16px; color: #a8c8b0; line-height: 1.7; margin-bottom: 28px; }
+
+footer { background: var(--text); color: #888; padding: 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.footer-logo { font-family: var(--font-head); font-size: 16px; font-weight: 800; text-transform: uppercase; color: #fff; letter-spacing: 0.04em; }
+.footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-links a { font-size: 12px; color: #888; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: #fff; }
+.footer-copy { font-size: 12px; }
+
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 16px; }
+  .hero, .editorial, .yab-block, .cta-grid { grid-template-columns: 1fr; }
+  .hero-img { height: 60vw; }
+  .hero-content { padding: 48px 28px; }
+  .meta-bar { grid-template-columns: 1fr 1fr; }
+  .gains-grid { grid-template-columns: 1fr; }
+  .ed-img img { min-height: unset; height: 56vw; }
+  .ed-content { padding: 48px 28px; }
+  .yab-img { height: 56vw; }
+  .yab-content { padding: 48px 28px; }
+  .section { padding: 64px 24px; }
+  .photo-strip-3 { grid-template-columns: 1fr; height: auto; }
+  .ps-item { height: 56vw; }
+  .partner-strip { flex-direction: column; padding: 36px 24px; }
+  footer { flex-direction: column; text-align: center; }
+  .footer-links { justify-content: center; }
+}
+</style>
 </head>
 <body>
+
 <nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">A Global Classroom</a>
-    <div class="nav-links">
-      <a href="about.html">About</a>
-      <a href="programs.html" class="active">Programs</a>
-      <a href="projects.html">Projects</a>
-      <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank"><i class="ti ti-shopping-bag"></i> Store</a>
-    </div>
-    <a href="contact.html" class="nav-cta">Get in touch</a>
+  <a href="index.html" class="nav-logo">A Global Classroom</a>
+  <div class="nav-links">
+    <a href="about.html">About</a>
+    <a href="programs.html" class="active">Programs</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank">Store &#8599;</a>
   </div>
+  <a href="contact.html" class="nav-btn">Get in touch</a>
 </nav>
 
-<div class="page">
-  <div class="hero">
-    <div class="hero-img">
-      <i class="ti ti-camera ph-icon"></i>
-      <span class="ph-label">Hero photo — educator retreat or Yabbiekayu scene</span>
-    </div>
-    <div class="hero-content">
-      <div class="eyebrow">Educator retreats</div>
-      <h1>Deepen your practice,<br><em>rooted in place.</em></h1>
-      <p class="hero-sub">Field-based professional learning experiences for educators — exploring new pedagogy, learning alongside community partners in Java, and returning to your classroom with deeper, more grounded perspectives.</p>
-      <div class="btn-row">
-        <a href="contact.html" class="btn btn-dark">Inquire about a retreat ↗</a>
-        <a href="programs.html" class="btn btn-outline-dark">See all programs ↗</a>
-      </div>
-    </div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-img">
+    <img src="images/valerie.jpg" alt="Educator looking out over the Java coastline">
   </div>
-
-  <div class="section">
-    <div class="section-label">Retreat overview</div>
-    <div class="meta-grid">
-      <div class="meta-item"><div class="meta-label"><i class="ti ti-map-pin"></i> Location</div><div class="meta-value">Tembi Village, Yogyakarta, Java</div></div>
-      <div class="meta-item"><div class="meta-label"><i class="ti ti-users"></i> Designed for</div><div class="meta-value">Teachers &amp; educators</div></div>
-      <div class="meta-item"><div class="meta-label"><i class="ti ti-home"></i> Home base</div><div class="meta-value">Yabbiekayu Eco-Bungalows</div></div>
-      <div class="meta-item"><div class="meta-label"><i class="ti ti-settings"></i> Format</div><div class="meta-value">Customizable — contact us</div></div>
-    </div>
+  <div class="hero-content">
+    <div class="tag">Educator retreats</div>
+    <h1>Deepen Your Practice, Rooted in Place.</h1>
+    <p class="hero-sub">Field-based professional learning for educators — exploring new pedagogy, learning alongside community partners in Java, and returning to your classroom with deeper, more grounded perspectives.</p>
+    <a href="contact.html" class="btn-pill btn-pill-cream">Inquire about a retreat</a>
   </div>
-
-  <div class="section">
-    <div class="section-label">What educators gain</div>
-    <div class="grid-2">
-      <div class="card" style="padding:22px;display:flex;gap:14px;">
-        <div style="width:34px;height:34px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-bulb" style="font-size:17px;color:var(--green-dark);"></i></div>
-        <div><h3 style="font-size:14px;margin-bottom:6px;">New pedagogical approaches</h3><p style="font-size:13px;color:var(--text-secondary);">Explore place-based and community-centered teaching methods you can bring back to your classroom.</p></div>
-      </div>
-      <div class="card" style="padding:22px;display:flex;gap:14px;">
-        <div style="width:34px;height:34px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-heart-handshake" style="font-size:17px;color:var(--green-dark);"></i></div>
-        <div><h3 style="font-size:14px;margin-bottom:6px;">Community learning</h3><p style="font-size:13px;color:var(--text-secondary);">Learn directly alongside AGC's community partners — artists, farmers, activists, and local leaders in Java.</p></div>
-      </div>
-      <div class="card" style="padding:22px;display:flex;gap:14px;">
-        <div style="width:34px;height:34px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-file-text" style="font-size:17px;color:var(--green-dark);"></i></div>
-        <div><h3 style="font-size:14px;margin-bottom:6px;">Curriculum development</h3><p style="font-size:13px;color:var(--text-secondary);">Develop your own classroom materials grounded in real-world case studies and lived community experience.</p></div>
-      </div>
-      <div class="card" style="padding:22px;display:flex;gap:14px;">
-        <div style="width:34px;height:34px;background:var(--yellow);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="ti ti-world" style="font-size:17px;color:var(--green-dark);"></i></div>
-        <div><h3 style="font-size:14px;margin-bottom:6px;">Global perspective</h3><p style="font-size:13px;color:var(--text-secondary);">Return to your classroom with deeper, more grounded perspectives on the global issues your students study.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <div style="background:var(--green-dark);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:40px;">
-    <div style="height:200px;background:#2a4a38;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;border-bottom:0.5px solid #3a6048;">
-      <i class="ti ti-camera" style="font-size:32px;color:#5a8a68;"></i>
-      <span style="font-size:12px;color:#5a8a68;">Photo of Yabbiekayu Eco-Bungalows</span>
-    </div>
-    <div style="padding:32px 40px;">
-      <span style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--yellow);border:0.5px solid var(--yellow);padding:3px 12px;border-radius:20px;display:inline-block;margin-bottom:12px;">Home base</span>
-      <h2 style="color:var(--heading-on-green);margin-bottom:12px;">Yabbiekayu Eco-Bungalows</h2>
-      <p style="color:var(--body-on-green);font-size:14px;">Located in Tembi Village, south of Yogyakarta, Yabbiekayu is an eco-friendly resort and social enterprise surrounded by rice fields and rooted in sustainable design principles. It provides a space for reflection, collaboration, and immersive learning connected to local communities and environmental sustainability.</p>
-    </div>
-  </div>
-
-  <div class="grid-2" style="margin-bottom:40px;">
-    <div class="ph-box" style="height:160px;"><i class="ti ti-camera ph-icon"></i><span class="ph-label">Retreat activity photo</span></div>
-    <div class="ph-box" style="height:160px;"><i class="ti ti-camera ph-icon"></i><span class="ph-label">Community visit photo</span></div>
-  </div>
-
-  <div class="quote-block">
-    <blockquote>AGC educator retreats are designed around the same principles as our student programs — community members participate as teachers and knowledge holders, not simply as hosts.</blockquote>
-    <p>Educators engage with local histories, livelihoods, cultural traditions, and environmental practices, building authentic relationships and deep contextual understanding.</p>
-  </div>
-
-  <div class="partner-strip">
-    <i class="ti ti-handshake"></i>
-    <p>All retreats are organized in partnership with <strong>Via Via Travel</strong> — committed to responsible tourism, cultural exchange, and community-based travel experiences in Yogyakarta.</p>
-  </div>
-
-  <div class="cta-block">
-    <h2>Plan your educator retreat</h2>
-    <p>Retreats are customized for your school, department, or professional learning goals. Get in touch to start the conversation.</p>
-    <div class="btn-row center">
-      <a href="contact.html" class="btn btn-yellow">Get in touch ↗</a>
-      <a href="programs.html" class="btn btn-outline-light">See student programs ↗</a>
-    </div>
-  </div>
-
-  <footer>
-    <span>© 2026 A Global Classroom</span>
-    <div class="footer-links">
-      <a href="about.html">About</a>
-      <a href="programs.html">Programs</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
-      <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
-    </div>
-  </footer>
 </div>
+
+<!-- META BAR -->
+<div class="meta-bar">
+  <div class="meta-item"><div class="meta-label">Designed for</div><div class="meta-value">Teachers &amp; educators</div></div>
+  <div class="meta-item"><div class="meta-label">Location</div><div class="meta-value">Tembi Village, Yogyakarta</div></div>
+  <div class="meta-item"><div class="meta-label">Home base</div><div class="meta-value">Yabbiekayu Eco-Bungalows</div></div>
+  <div class="meta-item"><div class="meta-label">Format</div><div class="meta-value">Fully customizable</div></div>
+</div>
+
+<!-- GAINS -->
+<section class="section" style="background:#fff;">
+  <div class="inner">
+    <div class="tag">What educators gain</div>
+    <h2 class="display" style="margin-bottom:40px;">Professional Learning That Goes Beyond the Classroom.</h2>
+    <div class="gains-grid">
+      <div class="gain-item">
+        <div class="gain-num">01</div>
+        <h3>New Pedagogical Approaches</h3>
+        <p>Explore place-based and community-centered teaching methods — inquiry-driven learning, experiential education, and justice-centered pedagogy you can bring directly back to your students.</p>
+      </div>
+      <div class="gain-item">
+        <div class="gain-num">02</div>
+        <h3>Community Learning</h3>
+        <p>Learn directly alongside AGC's community partners in Java — artists, farmers, activists, and local leaders. Build relationships and deepen your understanding of the communities your students study.</p>
+      </div>
+      <div class="gain-item">
+        <div class="gain-num">03</div>
+        <h3>Curriculum Development</h3>
+        <p>Develop your own classroom materials grounded in real-world case studies, primary sources, and lived community experience — ready to use in your next unit or course.</p>
+      </div>
+      <div class="gain-item">
+        <div class="gain-num">04</div>
+        <h3>Global Perspective</h3>
+        <p>Return to your classroom with deeper, more grounded perspectives on the global issues your students study — and the confidence to teach them with authenticity and nuance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<div class="editorial">
+  <div class="ed-img">
+    <img src="images/alice-and-paco.jpg" alt="Educators exploring in the garden">
+  </div>
+  <div class="ed-content cream">
+    <div class="tag">Our approach</div>
+    <blockquote>"Educators learn alongside communities — not just from them."</blockquote>
+    <p>AGC educator retreats are designed around the same principles as our student programs. Community members participate as teachers and knowledge holders, not simply as hosts.</p>
+    <p>Educators engage with local histories, livelihoods, cultural traditions, and environmental practices — building authentic relationships and deep contextual understanding that transforms how they teach.</p>
+  </div>
+</div>
+
+<!-- YABBIEKAYU -->
+<div class="yab-block">
+  <div class="yab-img">
+    <img src="images/yabbiekayu-welcome.jpg" alt="Welcome to Yabbiekayu chalkboard sign">
+  </div>
+  <div class="yab-content">
+    <div class="yab-label">Home base</div>
+    <h3>Yabbiekayu Eco-Bungalows</h3>
+    <p>Located in Tembi Village, south of Yogyakarta, Yabbiekayu is an eco-friendly resort and social enterprise surrounded by rice fields and rooted in sustainable design principles.</p>
+    <p>It provides a space for reflection, collaboration, and immersive learning connected to local communities and environmental sustainability — the perfect base for educator retreats.</p>
+  </div>
+</div>
+
+<!-- PHOTO STRIP -->
+<div class="photo-strip-3">
+  <div class="ps-item"><img src="images/IMG_9979.jpg" alt="Educators doing batik at a local workshop"></div>
+  <div class="ps-item"><img src="images/IMG_0075.jpg" alt="Educator painting batik up close"></div>
+  <div class="ps-item"><img src="images/IMG_1369.jpg" alt="Local children studying at Yabbiekayu"></div>
+</div>
+
+<!-- PARTNER STRIP -->
+<div class="partner-strip">
+  <div>
+    <div class="tag" style="margin-bottom:8px;">In partnership with</div>
+    <p>All AGC retreats are organized in partnership with <strong>Via Via Travel</strong> — committed to responsible tourism, cultural exchange, and community-based travel in Yogyakarta.</p>
+  </div>
+  <a href="contact.html" class="btn-pill btn-pill-cream" style="flex-shrink:0;">Plan a retreat</a>
+</div>
+
+<!-- CTA -->
+<section class="section" style="background:var(--green);">
+  <div class="inner">
+    <div class="cta-grid">
+      <div>
+        <div class="tag light">Plan your retreat</div>
+        <h2 class="display" style="color:#fff;">Designed Around Your School &amp; Professional Goals.</h2>
+      </div>
+      <div>
+        <p>AGC educator retreats are fully customizable for your school, department, or professional learning goals. Get in touch to start the conversation.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="contact.html" class="btn-pill btn-pill-cream">Get in touch</a>
+          <a href="programs.html" class="btn-block btn-block-outline-light">See all programs</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">A Global Classroom</div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 A Global Classroom</div>
+</footer>
+
 </body>
 </html>
