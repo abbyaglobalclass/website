@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — A Global Classroom</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; margin-bottom:56px; }
+  .form-block { display:flex; flex-direction:column; gap:16px; }
+  .form-group label { display:block; font-size:12px; font-weight:600; color:var(--text-secondary); margin-bottom:6px; }
+  .form-group input, .form-group textarea, .form-group select {
+    width:100%; font-family:var(--font-sans); font-size:14px;
+    border:0.5px solid var(--border); border-radius:var(--radius-sm);
+    padding:10px 14px; background:#fff; color:var(--text-primary);
+    outline:none; transition:border-color 0.2s;
+  }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color:var(--green-mid); }
+  .form-group textarea { height:130px; resize:vertical; }
+  .info-block { display:flex; flex-direction:column; gap:24px; }
+  .info-item { display:flex; align-items:flex-start; gap:14px; }
+  .info-icon { width:38px; height:38px; background:var(--yellow); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .info-icon i { font-size:18px; color:var(--green-dark); }
+  .info-label { font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-secondary); font-weight:600; margin-bottom:3px; }
+  .info-value { font-size:14px; }
+  .info-value a { color:var(--green-dark); font-weight:500; }
+  .social-row { display:flex; gap:8px; margin-top:6px; }
+  .social-btn { display:flex; align-items:center; gap:6px; padding:7px 14px; border-radius:var(--radius-sm); font-size:13px; font-weight:500; background:var(--bg-secondary); border:0.5px solid var(--border); color:var(--text-primary); text-decoration:none; transition:background 0.2s; }
+  .social-btn:hover { background:#eee; }
+  .reason-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:40px; }
+  .reason-card { background:var(--bg-secondary); border-radius:var(--radius-md); padding:20px; text-align:center; }
+  .reason-card i { font-size:24px; color:var(--green-dark); margin-bottom:10px; display:block; }
+  .reason-card span { font-size:13px; color:var(--text-secondary); }
+  @media(max-width:768px) { .contact-grid { grid-template-columns:1fr; } .reason-grid { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">A Global Classroom</a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="projects.html">Projects</a>
+      <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank"><i class="ti ti-shopping-bag"></i> Store</a>
+    </div>
+    <a href="contact.html" class="nav-cta active">Get in touch</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="hero" style="background:var(--yellow);">
+    <div class="hero-content" style="padding:56px 64px;">
+      <div class="eyebrow">Contact</div>
+      <h1>Let's start a<br><em>conversation.</em></h1>
+      <p class="hero-sub">Whether you're a teacher, school, or organization — we'd love to hear from you. Reach out about programs, curriculum, partnerships, or anything else.</p>
+    </div>
+  </div>
+
+  <div class="reason-grid">
+    <div class="reason-card">
+      <i class="ti ti-map-2"></i>
+      <span>Inquire about a field study or educator retreat</span>
+    </div>
+    <div class="reason-card">
+      <i class="ti ti-books"></i>
+      <span>Ask about curriculum or classroom resources</span>
+    </div>
+    <div class="reason-card">
+      <i class="ti ti-heart-handshake"></i>
+      <span>Explore a partnership or collaboration</span>
+    </div>
+  </div>
+
+  <div class="contact-grid">
+    <div class="form-block">
+      <div class="form-group">
+        <label>Your name</label>
+        <input type="text" placeholder="Your name" />
+      </div>
+      <div class="form-group">
+        <label>Email address</label>
+        <input type="email" placeholder="you@school.org" />
+      </div>
+      <div class="form-group">
+        <label>I'm reaching out about</label>
+        <select>
+          <option>A field study or program</option>
+          <option>Classroom curriculum</option>
+          <option>Educator retreat</option>
+          <option>Partnership or collaboration</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell us a bit about your school, students, or what you're looking for..."></textarea>
+      </div>
+      <button class="btn btn-dark" style="width:100%;justify-content:center;">Send message</button>
+    </div>
+
+    <div class="info-block">
+      <div class="info-item">
+        <div class="info-icon"><i class="ti ti-mail"></i></div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value"><a href="mailto:hello@aglobalclassroom.com">hello@aglobalclassroom.com</a></div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="ti ti-map-pin"></i></div>
+        <div>
+          <div class="info-label">Based in</div>
+          <div class="info-value">New York, USA &amp; Yogyakarta, Indonesia</div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="ti ti-share"></i></div>
+        <div>
+          <div class="info-label">Follow us</div>
+          <div class="social-row">
+            <a href="#" class="social-btn"><i class="ti ti-brand-instagram"></i> Instagram</a>
+            <a href="#" class="social-btn"><i class="ti ti-brand-linkedin"></i> LinkedIn</a>
+          </div>
+        </div>
+      </div>
+      <div class="info-item">
+        <div class="info-icon"><i class="ti ti-shopping-bag"></i></div>
+        <div>
+          <div class="info-label">Classroom resources</div>
+          <div class="info-value"><a href="https://aglobalclassroom.com/lessons" target="_blank">Visit the AGC store ↗</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 A Global Classroom</span>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

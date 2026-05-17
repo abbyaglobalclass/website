@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java, Indonesia Field Study — A Global Classroom</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .day-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-bottom:40px; }
+  .day-col { background:#fff; border:0.5px solid var(--border); border-radius:var(--radius-md); padding:18px; }
+  .day-col-head { font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--green-dark); font-weight:600; margin-bottom:10px; padding-bottom:8px; border-bottom:0.5px solid var(--border); }
+  .day-col ul { list-style:none; font-size:13px; color:var(--text-secondary); display:flex; flex-direction:column; gap:5px; }
+  .day-col ul li::before { content:'—'; margin-right:6px; color:#ccc; }
+  .theme-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:40px; }
+  .theme-chip { display:flex; align-items:center; gap:6px; padding:7px 14px; border-radius:20px; font-size:13px; background:var(--bg-secondary); border:0.5px solid var(--border); }
+  .theme-chip i { font-size:15px; color:var(--green-dark); }
+  .community-block { display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:start; margin-bottom:40px; }
+  .community-text { border-left:4px solid var(--yellow); padding:20px 24px; background:var(--bg-secondary); border-radius:0 var(--radius-md) var(--radius-md) 0; }
+  .community-text h3 { font-size:1.1rem; margin-bottom:10px; }
+  .community-text p { font-size:13px; color:var(--text-secondary); margin-bottom:8px; }
+  .outcomes-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin-bottom:40px; }
+  .outcome-card { background:#fff; border:0.5px solid var(--border); border-radius:var(--radius-md); padding:12px 14px; font-size:13px; display:flex; align-items:center; gap:8px; }
+  .outcome-card i { font-size:18px; color:var(--green-dark); }
+  @media(max-width:768px) { .day-grid { grid-template-columns:1fr; } .community-block { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">A Global Classroom</a>
+    <div class="nav-links">
+      <a href="about.html">About</a>
+      <a href="programs.html" class="active">Programs</a>
+      <a href="projects.html">Projects</a>
+      <a href="https://aglobalclassroom.com/lessons" class="nav-store" target="_blank"><i class="ti ti-shopping-bag"></i> Store</a>
+    </div>
+    <a href="contact.html" class="nav-cta">Get in touch</a>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="hero">
+    <div class="hero-img">
+      <i class="ti ti-camera ph-icon"></i>
+      <span class="ph-label">Hero photo — Java landscape or community scene</span>
+    </div>
+    <div class="hero-content">
+      <div class="eyebrow"><i class="ti ti-map-pin" style="font-size:11px;"></i> Sample field study program</div>
+      <h1>Java, Indonesia: Climate Justice, Community Resilience &amp; Sustainable Development</h1>
+      <p class="hero-sub">An immersive 10–21 day field study for high school and university students, engaging directly with communities on the frontlines of climate change in Yogyakarta, Java.</p>
+      <div class="btn-row">
+        <a href="contact.html" class="btn btn-dark">Inquire about this program ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Program overview</div>
+    <div class="meta-grid">
+      <div class="meta-item"><div class="meta-label"><i class="ti ti-map-pin"></i> Location</div><div class="meta-value">Yogyakarta, Java, Indonesia</div></div>
+      <div class="meta-item"><div class="meta-label"><i class="ti ti-calendar"></i> Length</div><div class="meta-value">10–21 days</div></div>
+      <div class="meta-item"><div class="meta-label"><i class="ti ti-users"></i> Designed for</div><div class="meta-value">High school &amp; university students</div></div>
+      <div class="meta-item"><div class="meta-label"><i class="ti ti-leaf"></i> Focus</div><div class="meta-value">Climate justice, sustainability, human rights</div></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">What a typical day looks like</div>
+    <div class="day-grid">
+      <div class="day-col">
+        <div class="day-col-head"><i class="ti ti-sun" style="font-size:13px;margin-right:4px;"></i>Morning</div>
+        <ul><li>Field visits</li><li>Community conversations</li><li>Interviews</li><li>Site visits</li></ul>
+      </div>
+      <div class="day-col">
+        <div class="day-col-head"><i class="ti ti-book" style="font-size:13px;margin-right:4px;"></i>Afternoon</div>
+        <ul><li>Inquiry workshops</li><li>Source analysis</li><li>Project work</li><li>Guided discussion</li></ul>
+      </div>
+      <div class="day-col">
+        <div class="day-col-head"><i class="ti ti-moon" style="font-size:13px;margin-right:4px;"></i>Evening</div>
+        <ul><li>Reflection circles</li><li>Journaling</li><li>Documentaries</li><li>Cultural activities</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Program themes</div>
+    <div class="theme-chips">
+      <div class="theme-chip"><i class="ti ti-world"></i> Climate justice</div>
+      <div class="theme-chip"><i class="ti ti-leaf"></i> Sustainable development</div>
+      <div class="theme-chip"><i class="ti ti-heart-handshake"></i> Community resilience</div>
+      <div class="theme-chip"><i class="ti ti-scale"></i> Human rights</div>
+      <div class="theme-chip"><i class="ti ti-alert-triangle"></i> Disaster risk</div>
+      <div class="theme-chip"><i class="ti ti-microphone"></i> Storytelling &amp; advocacy</div>
+      <div class="theme-chip"><i class="ti ti-map"></i> Place-based learning</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Sample 10-day itinerary</div>
+    <div id="accordion">
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggle(this)"><span class="day-num">Day 1</span><span>Arrival in Yogyakarta</span><i class="ti ti-chevron-down acc-chevron"></i></button>
+        <div class="accordion-body">Orientation, welcome dinner, and introduction to program themes and learning goals.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggle(this)"><span class="day-num">Day 2</span><span>Yogyakarta context</span><i class="ti ti-chevron-down acc-chevron"></i></button>
+        <div class="accordion-body">Cultural orientation, history, politics, and development walking tour of the city.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggle(this)"><span class="day-num">Day 3</span><span>Yabbiekayu and sustainable design</span><i class="ti ti-chevron-down acc-chevron"></i></button>
+        <div class="accordion-body">Explore eco-architecture, local food systems, and social enterprise at Yabbiekayu Eco-Bungalows in Tembi Village.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggle(this)"><span class="day-num">Day 4</span><span>Tembi village and community-based tourism</span><i class="ti ti-chevron-down acc-chevron"></i></button>
+        <div class="accordion-body">Workshops with local artisans and discussion of sustainable livelihoods and community-based tourism initiatives.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggle(this)"><span class="day-num">Day 5</span><span>Gunungkidul climate adaptation</span><i class="ti ti-chevron-down acc-chevron"></i></button>
+        <div class="accordion-body">Community visits focused on water scarcity, farming under climate stress, and locally led adaptation strategies.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggle(this)"><span class="day-num">Day 6</span><span>Women farmers and climate justice</span><i class="ti ti-chevron-down acc-chevron"></i></button>
+        <div class="accordion-body">Interviews, photography, storytelling, and reflection on gendered climate impacts and community resilience.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggle(this)"><span class="day-num">Day 7</span><span>Reflection and project development</span><i class="ti ti-chevron-down acc-chevron"></i></button>
+        <div class="accordion-body">Students organize notes, photos, interviews, and inquiry questions into their final project frameworks.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggle(this)"><span class="day-num">Day 8</span><span>Merapi and disaster risk</span><i class="ti ti-chevron-down acc-chevron"></i></button>
+        <div class="accordion-body">Explore disaster preparedness, local knowledge systems, and community resilience around the Merapi volcano region.</div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggle(this)"><span class="day-num">Day 9</span><span>Student project workshop</span><i class="ti ti-chevron-down acc-chevron"></i></button>
+        <div class="accordion-body">Students develop final projects — photo essays, podcasts, presentations, or policy recommendations.</div>
+      </div>
+      <div class="accordion-item" style="border-bottom:none;">
+        <button class="accordion-btn" onclick="toggle(this)"><span class="day-num">Day 10</span><span>Final presentations and closing reflection</span><i class="ti ti-chevron-down acc-chevron"></i></button>
+        <div class="accordion-body">Students share their learning and reflect on responsibility, justice, and action as global citizens.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="community-block">
+    <div class="community-text">
+      <h3>Learning from communities, not just about them</h3>
+      <p>AGC programs are designed to help students listen to and learn directly from the people most affected by the issues they study. Through fieldwork, conversations, and reflection, abstract global issues become human, personal, and meaningful.</p>
+      <p>Students are encouraged to move beyond charity-based thinking and recognize communities as knowledge holders, leaders, and agents of change.</p>
+    </div>
+    <div class="ph-box" style="height:220px;">
+      <i class="ti ti-camera ph-icon"></i>
+      <span class="ph-label">Community photo — e.g. students with farmer</span>
+    </div>
+  </div>
+
+  <div class="photo-strip">
+    <div class="strip-item">
+      <div class="ph-box" style="height:120px;"><i class="ti ti-camera ph-icon"></i><span class="ph-label">Morning field visit</span></div>
+      <div class="strip-label">Morning</div>
+    </div>
+    <div class="strip-item">
+      <div class="ph-box" style="height:120px;"><i class="ti ti-camera ph-icon"></i><span class="ph-label">Afternoon workshop</span></div>
+      <div class="strip-label">Afternoon</div>
+    </div>
+    <div class="strip-item">
+      <div class="ph-box" style="height:120px;"><i class="ti ti-camera ph-icon"></i><span class="ph-label">Evening reflection</span></div>
+      <div class="strip-label">Evening</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Student outcomes</div>
+    <div class="outcomes-grid">
+      <div class="outcome-card"><i class="ti ti-camera"></i> Photo essays</div>
+      <div class="outcome-card"><i class="ti ti-microphone"></i> Podcasts</div>
+      <div class="outcome-card"><i class="ti ti-video"></i> Short documentaries</div>
+      <div class="outcome-card"><i class="ti ti-notebook"></i> Reflection journals</div>
+      <div class="outcome-card"><i class="ti ti-speakerphone"></i> Oral history projects</div>
+      <div class="outcome-card"><i class="ti ti-file-text"></i> Policy briefs</div>
+      <div class="outcome-card"><i class="ti ti-presentation"></i> Final presentations</div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h2>Bring your students to Java</h2>
+    <p>AGC field studies can be customized for your school, course, and learning goals.</p>
+    <div class="btn-row center">
+      <a href="contact.html" class="btn btn-yellow">Plan a field study ↗</a>
+      <a href="programs.html" class="btn btn-outline-light">See all programs ↗</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>© 2026 A Global Classroom</span>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://aglobalclassroom.com/lessons" target="_blank">Store</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+  function toggle(btn) {
+    var body = btn.nextElementSibling;
+    var isOpen = body.classList.contains('open');
+    document.querySelectorAll('.accordion-body.open').forEach(function(b) { b.classList.remove('open'); });
+    document.querySelectorAll('.accordion-btn.open').forEach(function(b) { b.classList.remove('open'); });
+    if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
+  }
+</script>
+</body>
+</html>
